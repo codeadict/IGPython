@@ -1,9 +1,12 @@
 from django.db import models
 from django.utils.translation import gettext as _
+
 from phonenumber_field.modelfields import PhoneNumberField
 
+from base.models import ActivableMixin
 
-class Customer(models.Model):
+
+class Customer(models.Model, ActivableMixin):
     name = models.CharField(max_length=255, verbose_name=_('Customer Name'))
     
     #adresss
