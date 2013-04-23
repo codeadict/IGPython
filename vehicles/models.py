@@ -4,7 +4,7 @@ from django.utils.translation import gettext as _
 from base.models import ActivableMixin
 
 
-class Vehicles(models.Model, ActivableMixin):
+class Vehicles(ActivableMixin):
     """
     Database model for vehicles.
     """

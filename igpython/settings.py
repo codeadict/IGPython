@@ -1,7 +1,14 @@
 # Django settings for igpython project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+# Make paths relatives to settings.py
+ROOT = os.path.dirname(os.path.abspath(os.path.join(__file__)))
+path = lambda *a: os.path.join(ROOT, *a)
+
+ROOT_PACKAGE = os.path.basename(ROOT)
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -50,12 +57,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = path('media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -69,6 +76,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    path('static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -108,6 +116,7 @@ ROOT_URLCONF = 'igpython.urls'
 WSGI_APPLICATION = 'igpython.wsgi.application'
 
 TEMPLATE_DIRS = (
+    path('templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -121,7 +130,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
+    'base',
+    'customers',
+    'vehicles',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

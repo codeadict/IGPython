@@ -6,7 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from base.models import ActivableMixin
 
 
-class Customer(models.Model, ActivableMixin):
+class Customer(ActivableMixin):
     name = models.CharField(max_length=255, verbose_name=_('Customer Name'))
     
     #adresss

@@ -1,0 +1,190 @@
+{% load admin_static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+
+<html class="lt-ie9 lt-ie8 lt-ie7" lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+
+<![endif]-->
+<!--[if IE 7]>
+
+<html class="lt-ie9 lt-ie8" lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+
+<![endif]-->
+<!--[if IE 8]>
+
+<html class="lt-ie9" lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+
+<![endif]-->
+<!--[if gt IE 8]>
+<!-->
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+
+  <!--
+<![endif]-->
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="Dairon Medina <dairon.medina@gmail.com>">
+<link href="{% static "css/icomoon/style.css" %}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
+<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
+    
+<!-- bootstrap css -->
+<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+{% block extrastyle %}{% endblock %}
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% static "admin/css/ie.css" %}{% endblock %}" /><![endif]-->
+{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
+<script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
+{% block extrahead %}{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+</head>
+{% load i18n %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+
+    {% if not is_popup %}
+    <!-- Header -->
+    <header>
+        <div id="branding">
+        <a href="#" class="logo">
+        	<img src="{% static "img/logo.png" %}" alt="IGPython" width="150" />
+      	</a>
+        </div>
+        
+        {% if user.is_active and user.is_staff %}      
+	     <div class="btn-group" id="user-tools">
+	        <button class="btn btn-primary">
+	          {% trans 'Welcome,' %}
+	          <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+	        </button>
+	        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+	          <span class="caret">
+	          </span>
+	        </button>
+	        <ul class="dropdown-menu pull-right">
+	          {% block userlinks %}
+	          {% if user.has_usable_password %}
+		          <li>
+		            <a href="{% url 'admin:password_change' %}">
+		              {% trans 'Change password' %}
+		            </a>
+		          </li>
+	          {% endif %}
+	          <li>
+	            <a href="{% url 'admin:logout' %}">
+	              {% trans 'Log out' %}
+	            </a>
+	          </li>
+	          {% endblock %}
+	        </ul>
+	      </div>
+        {% endif %}
+        {% block nav-global %}{% endblock %}
+    </header>
+    
+    <!-- END Header -->
+    
+    <div class="container-fluid">
+    <div class="dashboard-container">
+          <div class="top-nav">
+          <ul>
+            <li>
+              <a href="index.html" class="selected">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe001;"></div>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="forms.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe0ab;"></div>
+                Vehicles
+              </a>
+            </li>
+            <li>
+              <a href="graphs.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe071;"></div>
+                Hauliers
+              </a>
+            </li>
+            <li>
+              <a href="ui-elements.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe075;"></div>
+                Customers
+              </a>
+            </li>
+            <li>
+              <a href="icons.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe043;"></div>
+                Sources
+              </a>
+            </li>
+            <li>
+              <a href="tables.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe05c;"></div>
+                Products
+              </a>
+            </li>
+            <li>
+              <a href="media.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe034;"></div>
+                Dockets
+              </a>
+            </li>
+            <li>
+              <a href="calendar.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe096;"></div>
+                Reports
+              </a>
+            </li>
+            <li>
+              <a href="typography.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe0a0;"></div>
+                Weighing
+              </a>
+            </li>
+          </ul>
+          <div class="clearfix">
+          </div>
+        </div>
+    <div class="dashboard-wrapper">
+    {% block breadcrumbs %}
+    <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+    {% if title %} &rsaquo; {{ title }}{% endif %}
+    </div>
+    {% endblock %}
+    {% endif %}
+
+    {% block messages %}
+        {% if messages %}
+        <ul class="messagelist">{% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+        {% endfor %}</ul>
+        {% endif %}
+    {% endblock messages %}
+
+    <!-- Content -->
+    <div class="{% block coltype %}colM{% endblock %}">
+        {% block pretitle %}{% endblock %}
+        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+        {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+        {% endblock %}
+        {% block sidebar %}{% endblock %}
+        <br class="clear" />
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- END Content -->
+
+    {% block footer %}<footer><p>&copy; 2013 <a href="http://igpython.co.uk/">IGPython UK</a>. All Rights Reserved.</p></footer>{% endblock %}
+
+<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+
+</body>
+</html>
