@@ -6,8 +6,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 from base.models import ActivableMixin
 
 
-class Customer(ActivableMixin):
-    name = models.CharField(max_length=255, verbose_name=_('Customer Name'))
+class Haulier(ActivableMixin):
+    name = models.CharField(max_length=255, verbose_name=_('Haulier Name'))
     
     #adresss
     street_line1 = models.CharField(_('Address 1'), max_length = 100, blank = True)
@@ -19,8 +19,8 @@ class Customer(ActivableMixin):
     fax_number = PhoneNumberField(_('Fax'), null=True, blank=True)
     email = models.EmailField(blank=True)
     contact_person = models.CharField(max_length=255, verbose_name=_('Contact Person'))
-    requires_reference = models.BooleanField(_('Requires reference number?'))
     notes = models.TextField(_('Notes'))
+    requires_reference = models.BooleanField(_('Requires reference number?'))
     
     class Meta:
         ordering = ('name',)

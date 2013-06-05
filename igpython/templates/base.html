@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+
+<html class="lt-ie9 lt-ie8 lt-ie7" lang="en">
+
+<![endif]-->
+<!--[if IE 7]>
+
+<html class="lt-ie9 lt-ie8" lang="en">
+
+<![endif]-->
+<!--[if IE 8]>
+
+<html class="lt-ie9" lang="en">
+
+<![endif]-->
+<!--[if gt IE 8]>
+<!-->
+<html lang="en">
+  
+  <!--
+<![endif]-->
+  <head>
+  	{% load static from staticfiles %}
+	{% load url from future %}
+    <meta charset="utf-8">
+    
+    <title>IGPython - {% block title %}{% endblock title %}</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+    </script>
+    <link href="{% static "css/icomoon/style.css" %}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
+    <!--[if lte IE 7]>
+    <script src="css/icomoon-font/lte-ie7.js">
+    </script>
+    <![endif]-->
+  	<link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+  <body>
+  <body class="{% block body_classes %}{% endblock %}" {% block body_add %}{% endblock %}>  
+    <header>
+      <a href="#" class="logo">
+        <img src="{% static "img/logo.png" %}" alt="Logo"/>
+      </a>
+      {% if user.is_authenticated %}
+      <div class="btn-group">
+        <button class="btn btn-primary">
+          {{ user.email }}
+        </button>
+        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+          <span class="caret">
+          </span>
+        </button>
+        <ul class="dropdown-menu pull-right">
+          <li>
+            <a href="#">
+              Account Settings
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}">
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+      {% endif %}
+     </header>
+     
+     <!-- END Header -->
+    <div class="container-fluid">
+    <div class="dashboard-container">
+          <div class="top-nav">
+          <ul>
+          	{% with url="/" text="Dashboard" icon="&#xe001;" %}{% include "_nav.html" %}{% endwith %}
+          	{% with url="/vehicles/" text="Vehicles" icon="&#xe0ab;" %}{% include "_nav.html" %}{% endwith %}
+          	{% with url="/hauliers/" text="Hauliers" icon="&#xe071;" %}{% include "_nav.html" %}{% endwith %}
+          	{% with url="/customers/" text="Customers" icon="&#xe075;" %}{% include "_nav.html" %}{% endwith %}
+            <li>
+              <a href="{% url 'sources_list' %}">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe043;"></div>
+                Sources
+              </a>
+            </li>
+            <li>
+              <a href="tables.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe05c;"></div>
+                Products
+              </a>
+            </li>
+            <li>
+              <a href="media.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe034;"></div>
+                Dockets
+              </a>
+            </li>
+            <li>
+              <a href="calendar.html">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe096;"></div>
+                Reports
+              </a>
+            </li>
+            {% with url="/weighin/" text="Weighing" icon="&#xe0a0;" %}{% include "_nav.html" %}{% endwith %}
+          </ul>
+          <div class="clearfix">
+          </div>
+        </div>
+        
+        <div class="dashboard-wrapper">
+        {% block content %}
+        
+        {% endblock %}        
+    	</div> <!--/.dashboard-wrapper-->
+    	</div>
+    	
+		{% block footer %}<footer><p>&copy; 2013 <a href="http://igpython.co.uk/">IGPython UK</a>. All Rights Reserved.</p></footer>{% endblock %}
+		
+		<script src="{% static "js/jquery.min.js" %}"></script>
+		<script src="{% static "js/bootstrap.js" %}"></script>
+		
+		{% block footer_scripts %}
+        
+        {% endblock %}  
+    
+  </body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}Weightin{% endblock title %}
+
+{% block body_add %}onload='draw(0);'{% endblock %}
+
+{% block content %}
+<div class="left-sidebar">
+    <div class="span12">
+        <div class="row-fluid">
+        		<canvas id="tutorial" width="440" height="220">
+					Canvas not available. You are running an Outdated Browser
+				</canvas>
+        <!-- Main screen here -->
+ 		</div>
+	</div>
+</div>
+
+<div class="right-sidebar">
+	<div class="wrapper">
+		<a class="btn btn-large btn-warning2 btn-block" role="button" href="#myModal" data-original-title="">Weigh In</a>
+		<button class="btn btn-large btn-info btn-block" type="button">Stored Tare</button>
+		<button class="btn btn-large btn-info btn-block" type="button">Delete</button>
+		<button class="btn btn-large btn-info btn-block" type="button">Print A4</button>
+	</div>
+	<hr class="hr-stylish-1">
+	
+	<div class="wrapper">
+		<div class="featured-articles-container">
+			<h5 class="heading-blue">OnSite Vehicles</h5>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block footer_scripts %}
+<script src="{% static "js/weigh.js" %}"></script>
+{% endblock %}

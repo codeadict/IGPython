@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}Vehicle List{% endblock title %}
+
+{% block content %}
+<div class="left-sidebar">
+    <div class="span12">
+        <div class="row-fluid">
+            <div class="span12">
+            	<div class="widget">
+                  <div class="widget-header">
+                    <div class="title">
+                      Vehicles
+                    </div>
+                    <div class="tools pull-right">
+                      <a class="btn btn-small" aria-hidden="true" href="#" data-original-title="">
+                      	<i class="icon-plus" data-original-title="Add Vehicle"> </i>
+                      </a> 
+                    </div>
+                  </div>
+                <div class="widget-body">
+                <div id="dt_example" class="example_alt_pagination">
+                <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                	<thead>
+                    <tr>
+                        <th>Vehicle Reference Number</th>
+                        <th>Max Gross</th>
+                        <th>Driver Name</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for vehicle in vehicle_list %}
+                    <tr>
+                        <td><i class="icon-list-alt"></i> <a href="" class="see">{{vehicle.reference_number}}</a></td>
+                        <td>{{vehicle.max_gross}} </td>
+                        <td>{{vehicle.driver_name}} </td>
+                        <td>
+                           <div class="btn-group">
+                              <button data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
+                                Action 
+                                <span class="caret">
+                                </span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">
+                                    Edit
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#">
+                                    Delete
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="right-sidebar">
+	<div class="wrapper">
+	
+	</div>
+	<hr class="hr-stylish-1">
+</div>
+{% endblock %}
+
+
+{% block footer_scripts %}
+<script src="{% static "js/jquery.dataTables.js" %}"></script>
+<script type="text/javascript">
+//Data Tables
+$(document).ready(function () {
+  $('#data-table').dataTable({
+    "sPaginationType": "full_numbers"
+  });
+});
+</script>
+{% endblock %}

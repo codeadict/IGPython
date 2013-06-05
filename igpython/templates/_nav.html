@@ -1,0 +1,6 @@
+<li>
+	<a href="{{ url }}" {% if request.path == url %} class="selected"{% else %} class="{{ request.path }}"{% endif %}>
+	<div class="fs1" aria-hidden="true" data-icon="{{ icon }}"></div>
+	{{ text }}
+	</a>
+</li>
