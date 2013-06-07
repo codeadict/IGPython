@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
+{% load global_tags %}
 
 {% block title %}LoadingPoint List{% endblock title %}
 
@@ -36,7 +37,7 @@
                     <tr>
                         <td><i class="icon-list-alt"></i> <a href="" class="see">{{lp.name}}</a></td>
                         <td>{{lp.ammount_taken}} T </td>
-                        <td>{{lp.is_destination}} </td>
+                        <td>{{lp.is_destination|boolean_icon}} </td>
                         <td>{{lp.requires_reference}} </td>
                         <td>
                            <div class="btn-group">
