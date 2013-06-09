@@ -18,4 +18,7 @@ class Vehicles(ActivableMixin):
     class Meta:
         verbose_name = 'Vehicle'
         verbose_name_plural = 'Vehicles'
+        
+    def __unicode__(self):
+        return self.driver_name
 

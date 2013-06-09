@@ -1,0 +1,14 @@
+{% extends "model_report/base_report.html" %}
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% block title %}{% trans "Reports" %}{% endblock %}
+
+
+{% block sidebar %}
+	{% include "model_report/includes/report_nav.html" %}
+{% endblock %}
+
+{% block rpt_content %}
+	<img src="{% static "img/reporting-img.jpg" %}" />
+{% endblock %}

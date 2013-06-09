@@ -43,6 +43,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+    {% block head_extra %}
+    {% endblock %}
   </head>
   <body>
   <body class="{% block body_classes %}{% endblock %}" {% block body_add %}{% endblock %}>  
@@ -96,18 +98,8 @@
                 Products
               </a>
             </li>
-            <li>
-              <a href="media.html">
-                <div class="fs1" aria-hidden="true" data-icon="&#xe034;"></div>
-                Dockets
-              </a>
-            </li>
-            <li>
-              <a href="calendar.html">
-                <div class="fs1" aria-hidden="true" data-icon="&#xe096;"></div>
-                Reports
-              </a>
-            </li>
+            {% with url="/dockets/" text="Dockets" icon="&#xe034;" %}{% include "_nav.html" %}{% endwith %}
+            {% with url="/reports/" text="Reports" icon="&#xe096;" %}{% include "_nav.html" %}{% endwith %}
             {% with url="/weighin/" text="Weighing" icon="&#xe0a0;" %}{% include "_nav.html" %}{% endwith %}
           </ul>
           <div class="clearfix">
@@ -115,6 +107,15 @@
         </div>
         
         <div class="dashboard-wrapper">
+        {% if messages %}
+	        <!-- Messages for this instance -->
+	        {% for message in messages %}
+	          <div class="alert alert-{{ message.tags }}">
+	            <a class="close" data-dismiss="alert" href="#">&times;</a>
+	            {{ message }}
+	          </div>
+	        {% endfor %}
+	    {% endif %}
         {% block content %}
         
         {% endblock %}        

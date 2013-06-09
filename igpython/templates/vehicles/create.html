@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static from staticfiles %}
+{% load global_tags %}
+
+{% block title %}{% trans "Create Vehicle" %}{% endblock title %}
+
+{% block content %}
+<div class="left-sidebar">
+    <div class="span12">
+        <div class="row-fluid">
+            <div class="span12">
+            	<div class="widget">
+                  <div class="widget-header">
+                    <div class="title">
+                      Create Vehicle
+                      <span class="mini-title"> Adds new vehicle to database </span>
+                    </div>
+                  </div>
+                <div class="widget-body">
+                	<form class="form-horizontal no-margin" method="POST">
+                		{% render_form create_form %}
+                		<div class="form-actions no-margin">          
+	                        <button class="btn btn-info pull-right" type="submit">
+	                          {% trans "Add Vehicle" %}
+	                        </button>
+	                        
+	                        <a href="{% url "vehicle_list" %}" class="btn pull-left">
+					          <span class="icon-circle-arrow-left"></span>
+					          {% trans "Go back" %}
+					        </a>
+	                        <div class="clearfix"></div>
+                      	</div>
+                	</form>             
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>   
+</div>
+
+{% endblock %}

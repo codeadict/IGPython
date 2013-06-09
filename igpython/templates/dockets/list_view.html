@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+{% load static from staticfiles %}
+{% load global_tags %}
+
+{% block title %}Dockets{% endblock title %}
+
+{% block content %}
+<div class="left-sidebar">
+    <div class="span12">
+        <div class="row-fluid">
+            <div class="span12">
+            	<div class="widget">
+                  <div class="widget-header">
+                    <div class="title">
+                      Dockets
+                    </div>
+                  </div>
+                <div class="widget-body">
+                <div id="dt_example" class="example_alt_pagination">
+                <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                	<thead>
+                    <tr>
+                        <th>Docket No.</th>
+                        <th>Docket Date</th>
+                        <th>Gross</th>
+                        <th>Tare</th>
+                        <th>Net</th>
+                        <th>Ind ID</th>
+                        <th>Ind ID</th>
+                        <th>Cancelled</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for docket in docket_list %}
+                    <tr>
+                        <td>{{docket.docket_number}}</td>
+                        <td>{{docket.docket_date}} </td>
+                        <td>{{docket.gross}} </td>
+                        <td>{{docket.tare}} </td>
+                        <td>{{docket.net}} </td>
+                        <td>{{docket.ind_id}} </td>
+                        <td>{{docket.ind_id2}} </td>
+                        <td>{{docket.cancelled|boolean_icon}} </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+
+{% block footer_scripts %}
+<script src="{% static "js/jquery.dataTables.js" %}"></script>
+<script type="text/javascript">
+//Data Tables
+$(document).ready(function () {
+  $('#data-table').dataTable({
+    "sPaginationType": "full_numbers"
+  });
+});
+</script>
+{% endblock %}

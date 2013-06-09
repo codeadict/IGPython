@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+    {% block container %}
+    <div class="right-sidebar">
+          <div class="wrapper">
+				<div class="featured-articles-container">
+					<h5 class="heading-blue">{% trans "Select a Report" %}</h5>
+				</div>
+				<ul class="nav nav-list">
+	              {% block sidebar %}
+	              {% endblock %}
+            	</ul>
+		  </div>
+   </div>
+   
+   <div class="left-sidebar">
+        {% block rpt_content %}
+        {% endblock %}
+        </div>
+   </div>
+    {% endblock %}
+{% endblock %}

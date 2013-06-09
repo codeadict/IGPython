@@ -1,0 +1,9 @@
+{% csrf_token %}
+
+{% include "includes/formerrors.html" %}
+
+{% for field in form %}
+
+  {% include "includes/formfield.html" %}
+
+{% endfor %}

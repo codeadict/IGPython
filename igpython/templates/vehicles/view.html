@@ -1,0 +1,48 @@
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% load global_tags %}
+		
+{# Modal Dialog to show vehicle details#}
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+      ×
+    </button>
+    <h3 id="myModalLabel">
+      Driver Name: {{vehicle.driver_name}}
+    </h3>
+  </div>
+  <div class="modal-body">
+    <h4>
+      Details
+    </h4>
+    <table class="table table-striped">
+    	<tbody>
+			<tr>
+				<td>Max Gross:</td>
+				<td>{{vehicle.max_gross}}</td>
+			</tr>
+			<tr>
+				<td>Use Stored Tare:</td>
+				<td>{{vehicle.use_stored_tare|boolean_icon}}</td>
+			</tr>
+			<tr>
+				<td>Print Ticket:</td>
+				<td>{{vehicle.print_ticket|boolean_icon}}</td>
+			</tr>
+			<tr>
+				<td>Vehicle reference number:</td>
+				<td>{{vehicle.reference_number|boolean_icon}}</td>
+			</tr>
+			<tr>
+				<td>Active:</td>
+				<td>{{vehicle.active|boolean_icon}}</td>
+			</tr>
+		</tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">
+      {% trans "Close" %}
+    </button>
+  </div>

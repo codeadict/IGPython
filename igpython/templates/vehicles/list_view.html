@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load url from future %}
 {% load static from staticfiles %}
 {% load global_tags %}
 
@@ -16,7 +17,7 @@
                       Vehicles
                     </div>
                     <div class="tools pull-right">
-                      <a class="btn btn-small" aria-hidden="true" href="#" data-original-title="">
+                      <a class="btn btn-small" aria-hidden="true" href="{% url "vehicle_create" %}" data-original-title="">
                       	<i class="icon-plus" data-original-title="Add Vehicle"> </i>
                       </a> 
                     </div>
@@ -35,7 +36,7 @@
                     <tbody>
                     {% for vehicle in vehicle_list %}
                     <tr>
-                        <td><i class="icon-list-alt"></i> <a href="" class="see">{{vehicle.driver_name}}</a></td>
+                        <td><i class="icon-list-alt"></i> <a href="{% url "vehicle_details" vehicle.id %}" class="see">{{vehicle.driver_name}}</a></td>
                         <td>{{vehicle.max_gross}} </td>
                         <td>{{vehicle.reference_number|boolean_icon}} </td>
                         <td>
@@ -78,6 +79,7 @@
 	</div>
 	<hr class="hr-stylish-1">
 </div>
+<div class="modal hide" id="viewVehicle"></div>
 {% endblock %}
 
 
@@ -89,6 +91,16 @@ $(document).ready(function () {
   $('#data-table').dataTable({
     "sPaginationType": "full_numbers"
   });
+});
+
+$(".see").click(function(ev) { // for each see a
+    ev.preventDefault(); // prevent navigation
+    var url = $(this).attr("href"); // get the view url
+    console.log(url);
+    $("#viewVehicle").load(url, function() { // load the url into the modal
+        $(this).modal('show'); // display the modal on url load
+    });
+    return false; // prevent the click propagation
 });
 
 jQuery('.delete-row').click(function () {
