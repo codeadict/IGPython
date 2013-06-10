@@ -49,11 +49,24 @@ To get the latest Source Code clone this repository by running:
 
     Be sure to have git installed on your system.
 
-## Create Database
+### Create Database
 
 After configuring OpenWeigh the next step is to create the database used by it by running: 
 
     python manage.py syncdb
+
+## Running OpenWeigh
+
+Finally, start the development server by running the following line, and to take it for a spin by opening http://localhost:8000 in your browser.
+
+    python manage.py runserver
+
+In order for the server to be accessible from another computer you can run the following line instead:
+
+    python manage.py runserver 0.0.0.0:8000 
+    
+  
+
 
     
 
