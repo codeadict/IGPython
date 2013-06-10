@@ -1,9 +1,12 @@
+from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext as _
 
 from phonenumber_field.modelfields import PhoneNumberField
 
 from base.models import ActivableMixin
+
+from django.utils.safestring import mark_safe
 
 
 class Customer(ActivableMixin):
@@ -25,3 +28,12 @@ class Customer(ActivableMixin):
     class Meta:
         ordering = ('name',)
         verbose_name_plural = _('Customers')
+        
+    def image_or_default(self):
+        """Return user company or a default."""
+        avatar = '%s%s' % (settings.STATIC_URL, '/img/customer-missing.jpg')
+        
+#         if self.image:
+#             avatar = '%s%s' % (settings.MEDIA_URL, self.image)
+            
+        return mark_safe(avatar)

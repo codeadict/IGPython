@@ -1,0 +1,72 @@
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% load global_tags %}
+		
+{# Modal Dialog to show customer details#}
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+      ×
+    </button>
+    <h3 id="myModalLabel">
+      {% trans  "Customer" %}: {{customer.name}}
+    </h3>
+  </div>
+  <div class="modal-body">
+  	<div class="container-fluid">
+		<div class="row-fluid">
+		<div class="span3">
+			<div class="thumbnail">
+				<img src="{{customer.image_or_default}}" alt="300x200"/>
+			</div>
+		</div>
+		<div class="span9">
+		<h4>
+	      Details
+	    </h4>
+	    <hr/>
+	    <table class="table table-striped">
+	    	<tbody>
+				<tr>
+					<td>Address:</td>
+					<td>{{customer.street_line1}}<br/>{{customer.street_line2}}<br/>{{customer.city}}</td>
+				</tr>
+				<tr>
+					<td>Telephone:</td>
+					<td><a href="tel:{{customer.phone_number}}">{{customer.phone_number}}</a></td>
+				</tr>
+				<tr>
+					<td>Fax:</td>
+					<td>{{customer.fax_number}}</td>
+				</tr>
+				<tr>
+					<td>E-Mail:</td>
+					<td>{{customer.email}}</td>
+				</tr>
+				<tr>
+					<td>Contact Person:</td>
+					<td>{{customer.contact_person}}</td>
+				</tr>
+				<tr>
+					<td>Notes:</td>
+					<td>{{customer.notes}}</td>
+				</tr>
+				<tr>
+					<td>Requires reference number:</td>
+					<td>{{customer.requires_reference|boolean_icon}}</td>
+				</tr>
+				<tr>
+					<td>Active:</td>
+					<td>{{customer.active|boolean_icon}}</td>
+				</tr>
+			</tbody>
+	    </table>
+		</div>
+	</div>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">
+      {% trans "Close" %}
+    </button>
+  </div>

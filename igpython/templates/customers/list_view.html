@@ -35,7 +35,7 @@
                     <tbody>
                     {% for customer in customer_list %}
                     <tr>
-                        <td><i class="icon-list-alt"></i> <a href="" class="see">{{customer.name}}</a></td>
+                        <td><i class="icon-list-alt"></i> <a href="{% url "customer_details" customer.id %}" class="see">{{customer.name}}</a></td>
                         <td>{{customer.contact_person}} </td>
                         <td>{{customer.phone_number}} </td>
                         <td>{{customer.email}} </td>
@@ -80,6 +80,7 @@
 	</div>
 	<hr class="hr-stylish-1">
 </div>
+<div class="modal hide" id="viewCustomer"></div>
 {% endblock %}
 
 
@@ -91,6 +92,16 @@ $(document).ready(function () {
   $('#data-table').dataTable({
     "sPaginationType": "full_numbers"
   });
+});
+
+$(".see").click(function(ev) { // for each see a
+    ev.preventDefault(); // prevent navigation
+    var url = $(this).attr("href"); // get the view url
+    console.log(url);
+    $("#viewCustomer").load(url, function() { // load the url into the modal
+        $(this).modal('show'); // display the modal on url load
+    });
+    return false; // prevent the click propagation
 });
 </script>
 {% endblock %}

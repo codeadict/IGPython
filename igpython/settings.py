@@ -152,6 +152,8 @@ INSTALLED_APPS = (
     'dockets',
     'model_report',
     'reporting',
+    #Add migrations
+    'south',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
