@@ -3,7 +3,7 @@ Open Weigh
 
 Software for Weighting Devices
 
-![Image](codeadict.github.com/IGPython/master/igpython/static/img/reporting-img.jpg)
+![Image](igpython/static/img/reporting-img.jpg)
 
 Contributing
 ------------
