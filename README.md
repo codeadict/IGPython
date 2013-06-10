@@ -41,3 +41,19 @@ Firstly, you need to get development libraries that PIP needs before compiling. 
 
 After that, choose either `pip install PIL` or `pip install Pillow`. Pillow is the pip-friendly version of PIL. You might as well install PIL system-wide, because there are little version-specific dependencies in Django applications when it comes to PIL.
 
+### Downloading the source code
+
+To get the latest Source Code clone this repository by running:
+
+	git clone git@github.com:codeadict/IGPython.git
+
+    Be sure to have git installed on your system.
+
+## Create Database
+
+After configuring OpenWeigh the next step is to create the database used by it by running: 
+
+    python manage.py syncdb
+
+    
+
