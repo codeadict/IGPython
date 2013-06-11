@@ -1,7 +1,7 @@
 Open Weigh
 ==========
 
-Software for Weighting Devices
+Software for Weighbridge systems and weighing devices
 
 ![Image](igpython/static/img/reporting-img.jpg)
 
