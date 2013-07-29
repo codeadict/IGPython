@@ -17,16 +17,16 @@
 <!--[if gt IE 8]>
 <!-->
 <html lang="en">
-  
+
   <!--
 <![endif]-->
   <head>
   	{% load static from staticfiles %}
 	{% load url from future %}
     <meta charset="utf-8">
-    
+
     <title>IGPython - {% block title %}{% endblock title %}</title>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -47,7 +47,7 @@
     {% endblock %}
   </head>
   <body>
-  <body class="{% block body_classes %}{% endblock %}" {% block body_add %}{% endblock %}>  
+  <body class="{% block body_classes %}{% endblock %}" {% block body_add %}{% endblock %}>
     <header>
       <a href="#" class="logo">
         <img src="{% static "img/logo.png" %}" alt="Logo"/>
@@ -76,7 +76,7 @@
       </div>
       {% endif %}
      </header>
-     
+
      <!-- END Header -->
     <div class="container-fluid">
     <div class="dashboard-container">
@@ -105,7 +105,7 @@
           <div class="clearfix">
           </div>
         </div>
-        
+
         <div class="dashboard-wrapper">
         {% if messages %}
 	        <!-- Messages for this instance -->
@@ -115,21 +115,22 @@
 	            {{ message }}
 	          </div>
 	        {% endfor %}
+            <div class="clearfix"></div>
 	    {% endif %}
         {% block content %}
-        
-        {% endblock %}        
+
+        {% endblock %}
     	</div> <!--/.dashboard-wrapper-->
     	</div>
-    	
+
 		{% block footer %}<footer><p>&copy; 2013 <a href="http://igpython.co.uk/">IGPython UK</a>. All Rights Reserved.</p></footer>{% endblock %}
-		
+
 		<script src="{% static "js/jquery.min.js" %}"></script>
 		<script src="{% static "js/bootstrap.js" %}"></script>
-		
+
 		{% block footer_scripts %}
-        
-        {% endblock %}  
-    
+
+        {% endblock %}
+
   </body>
 </html>
