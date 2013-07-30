@@ -58,7 +58,7 @@ function createLine(fromX, fromY, toX, toY, fillStyle, lineWidth, alpha) {
 }
 
 function drawOuterMetallicArc(options) {
-	/* Draw the metallic border of the speedometer 
+	/* Draw the metallic border of the speedometer
 	 * Outer grey area
 	 */
 	options.ctx.beginPath();
@@ -79,7 +79,7 @@ function drawOuterMetallicArc(options) {
 }
 
 function drawInnerMetallicArc(options) {
-	/* Draw the metallic border of the speedometer 
+	/* Draw the metallic border of the speedometer
 	 * Inner white area
 	 */
 
@@ -174,9 +174,9 @@ function drawSmallTickMarks(options) {
 
 		/* Calculate the X and Y of both ends of the
 		 * line I need to draw at angle represented at Tick.
-		 * The aim is to draw the a line starting on the 
+		 * The aim is to draw the a line starting on the
 		 * coloured arc and continueing towards the outer edge
-		 * in the direction from the center of the gauge. 
+		 * in the direction from the center of the gauge.
 		 */
 
 		onArchX = gaugeOptions.radius - (Math.cos(iTickRad) * tickvalue);
@@ -229,9 +229,9 @@ function drawLargeTickMarks(options) {
 
 		/* Calculate the X and Y of both ends of the
 		 * line I need to draw at angle represented at Tick.
-		 * The aim is to draw the a line starting on the 
+		 * The aim is to draw the a line starting on the
 		 * coloured arc and continueing towards the outer edge
-		 * in the direction from the center of the gauge. 
+		 * in the direction from the center of the gauge.
 		 */
 
 		onArchX = gaugeOptions.radius - (Math.cos(iTickRad) * tickvalue);
@@ -275,7 +275,7 @@ function drawTextMarkers(options) {
 	applyDefaultContextSettings(options);
 
 	// Font styling
-	options.ctx.font = 'italic 10px sans-serif';
+	options.ctx.font = '10px sans-serif';
 	options.ctx.textBaseline = 'top';
 
 	options.ctx.beginPath();
@@ -346,7 +346,7 @@ function drawSpeedometerColourArc(options) {
 	    endOfGreen = 200,
 	    endOfOrange = 280;
 
-	drawSpeedometerPart(options, 1.0, "rgb(82, 240, 55)", startOfGreen);
+	drawSpeedometerPart(options, 1.0, "rgb(26, 46, 91)", startOfGreen);
 	drawSpeedometerPart(options, 0.9, "rgb(198, 111, 0)", endOfGreen);
 	drawSpeedometerPart(options, 0.9, "rgb(255, 0, 0)", endOfOrange);
 
@@ -380,7 +380,7 @@ function drawNeedleDial(options, alphaValue, strokeStyle, fillStyle) {
 }
 
 function convertSpeedToAngle(options) {
-	/* Helper function to convert a speed to the 
+	/* Helper function to convert a speed to the
 	* equivelant angle.
 	*/
 	var iSpeed = (options.speed / 10),
@@ -423,7 +423,7 @@ function drawNeedle(options) {
 }
 
 function buildOptionsAsJSON(canvas, iSpeed) {
-	/* Setting for the speedometer 
+	/* Setting for the speedometer
 	* Alter these to modify its look and feel
 	*/
 
@@ -461,10 +461,10 @@ function draw() {
 	/* Main entry point for drawing the speedometer
 	* If canvas is not support alert the user.
 	*/
-		
+
 	console.log('Target: ' + iTargetSpeed);
 	console.log('Current: ' + iCurrentSpeed);
-	
+
 	var canvas = document.getElementById('tutorial'),
 	    options = null;
 
@@ -492,11 +492,11 @@ function draw() {
 
 		// Draw the needle and base
 		drawNeedle(options);
-		
+
 	} else {
 		alert("Canvas not supported by your browser!");
 	}
-	
+
 	if(iTargetSpeed == iCurrentSpeed) {
 		clearTimeout(job);
 		return;
@@ -505,20 +505,20 @@ function draw() {
 	} else if(iTargetSpeed > iCurrentSpeed) {
 		bDecrement = false;
 	}
-	
+
 	if(bDecrement) {
 		if(iCurrentSpeed - 10 < iTargetSpeed)
 			iCurrentSpeed = iCurrentSpeed - 1;
 		else
 			iCurrentSpeed = iCurrentSpeed - 5;
 	} else {
-	
+
 		if(iCurrentSpeed + 10 > iTargetSpeed)
 			iCurrentSpeed = iCurrentSpeed + 1;
 		else
 			iCurrentSpeed = iCurrentSpeed + 5;
 	}
-	
+
 	job = setTimeout("draw()", 5);
 }
 
@@ -540,6 +540,6 @@ function drawWithInputValue() {
         }
 
         job = setTimeout("draw()", 5);
- 
+
     }
 }

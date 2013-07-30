@@ -1,10 +1,14 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2013 OpenWeigh.co.uk
+# Developer: Dairon Medina Caro <dairon.medina@gmail.com>
+# Co-Developer Rhys Park <sales@openweigh.co.uk>
 import sys, glob
 import serial
 from django.db import models
 from base.models import ActivableMixin
 from django.utils.translation import gettext as _
 
-# Create your models here.
+from weighin.devices import drivers
 
 def port_list():
     """
@@ -23,14 +27,29 @@ def port_list():
         return available
     elif sys.platform == "darwin":
         # Mac
-        return glob.glob('/dev/tty*') + glob.glob('/dev/cu*')
+        ports = glob.glob('/dev/tty*') + glob.glob('/dev/cu*')
     else:
         # Assume Linux or something else
-        return glob.glob('/dev/ttyS*') + glob.glob('/dev/ttyUSB*')
+        i = 0
+        ports = glob.glob('/dev/ttyS*') + glob.glob('/dev/ttyUSB*')
 
-class Devices(ActivableMixin):
+    choices = tuple((str(i),ports[i]) for i in range(len(ports)))
+    return choices
+
+
+class Device(ActivableMixin):
     """
     Base model for storing devices
     """
     name = models.CharField(_('Device Name'), max_length = 100, blank = True)
-    port = models.CharField(_('Port ID'), max_length = 255, blank = True)
+    port = models.CharField(_('Port ID'), choices=port_list(), max_length = 255, blank = True)
+    default = models.BooleanField(_('Is Defaul?'), default=False)
+
+    class Meta:
+        ordering = ('default',)
+        verbose_name_plural = _('Devices')
+
+    def get_weight(self):
+        #driver = self.driver(self.name, self.port)
+        #return driver.get_weight()
+        raise NotImplementedError

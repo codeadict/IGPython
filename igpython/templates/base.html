@@ -86,12 +86,7 @@
           	{% with url="/vehicles/" text="Vehicles" icon="&#xe0ab;" %}{% include "_nav.html" %}{% endwith %}
           	{% with url="/hauliers/" text="Hauliers" icon="&#xe071;" %}{% include "_nav.html" %}{% endwith %}
           	{% with url="/customers/" text="Customers" icon="&#xe075;" %}{% include "_nav.html" %}{% endwith %}
-            <li>
-              <a href="{% url 'sources_list' %}">
-                <div class="fs1" aria-hidden="true" data-icon="&#xe043;"></div>
-                Sources
-              </a>
-            </li>
+            {% with url="/sources/" text="Sources" icon="&#xe043;" %}{% include "_nav.html" %}{% endwith %}
             <li>
               <a href="tables.html">
                 <div class="fs1" aria-hidden="true" data-icon="&#xe05c;"></div>

@@ -26,7 +26,7 @@ $primary-font-color: #fff;*/
 /* Theme 5  */
 /*$canvas-color: #111111;
 $canvas-font-color: #f9f9f9;
-$primary-color: #ed6d49;
+$primary-color: #f8a428;
 $primary-font-color: #fff;*/
 /* Theme 6  */
 /*$canvas-color: #222222;
@@ -270,7 +270,7 @@ a {
   -o-transition: All 0.5s ease;
   transition: All 0.5s ease; }
   a:hover {
-    color: #ed6d49;
+    color: #f8a428;
     text-decoration: none; }
 
 .img-rounded {
@@ -731,7 +731,7 @@ blockquote {
     font-weight: 300;
     line-height: 24px; }
   blockquote .title {
-    color: #ed6d49;
+    color: #f8a428;
     font-weight: bold;
     font-size: 14px; }
   blockquote small {
@@ -1857,25 +1857,25 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #eb5a32;
   /* Fallback Color */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ed6d49), to(#eb5a32));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f8a428), to(#eb5a32));
   /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #ed6d49, #eb5a32);
+  background-image: -webkit-linear-gradient(top, #f8a428, #eb5a32);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #ed6d49, #eb5a32);
+  background-image: -moz-linear-gradient(top, #f8a428, #eb5a32);
   /* FF3.6 */
-  background-image: -ms-linear-gradient(top, #ed6d49, #eb5a32);
+  background-image: -ms-linear-gradient(top, #f8a428, #eb5a32);
   /* IE10 */
-  background-image: -o-linear-gradient(top, #ed6d49, #eb5a32);
+  background-image: -o-linear-gradient(top, #f8a428, #eb5a32);
   /* Opera 11.10+ */
-  background-image: linear-gradient(top, #ed6d49, #eb5a32);
-  border-color: #ed6d49 #ed6d49 #eb5a32;
+  background-image: linear-gradient(top, #f8a428, #eb5a32);
+  border-color: #f8a428 #f8a428 #eb5a32;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); }
   .btn-warning2:hover, .btn-warning2:active, .btn-warning2.active, .btn-warning2.disabled, .btn-warning2[disabled] {
     color: white;
     background-color: #eb5a32;
     *background-color: #eb5a32; }
   .btn-warning2:active, .btn-warning2.active {
-    background-color: #ed6d49 \9; }
+    background-color: #f8a428 \9; }
 
 .btn-danger {
   color: white;
@@ -3858,7 +3858,7 @@ a.thumbnail:hover {
   background-image: linear-gradient(top, #fbb450, #f89406); }
 
 .progress-warning.progress-striped .bar, .progress-striped .bar-warning {
-  background-color: #ed6d49;
+  background-color: #f8a428;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, #ef8060), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #ef8060), color-stop(0.75, #ef8060), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, #ef8060 25%, transparent 25%, transparent 50%, #ef8060 50%, #ef8060 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, #ef8060 25%, transparent 25%, transparent 50%, #ef8060 50%, #ef8060 75%, transparent 75%, transparent);
@@ -4264,23 +4264,23 @@ a.thumbnail:hover {
     .dropdown-menu li > a:hover, .dropdown-menu li > a:focus {
       text-decoration: none;
       color: white;
-      background: #ed6d49; }
+      background: #f8a428; }
 
 .dropdown-submenu:hover > a {
   text-decoration: none;
   color: white;
-  background: #ed6d49; }
+  background: #f8a428; }
 
 .dropdown-menu .active > a {
   color: white;
   text-decoration: none;
   outline: 0;
-  background: #ed6d49; }
+  background: #f8a428; }
   .dropdown-menu .active > a:hover {
     color: white;
     text-decoration: none;
     outline: 0;
-    background: #ed6d49; }
+    background: #f8a428; }
 .dropdown-menu .disabled > a {
   color: #999999; }
   .dropdown-menu .disabled > a:hover {
@@ -5131,9 +5131,9 @@ button.close {
     top: 0;
     width: 100%; }
   #scrollbar .thumb, #scrollbar-one .thumb, #scrollbar-two .thumb, #scrollbar-three .thumb {
-    background-color: #ed6d49; }
+    background-color: #f8a428; }
     #scrollbar .thumb .end, #scrollbar-one .thumb .end, #scrollbar-two .thumb .end, #scrollbar-three .thumb .end {
-      background-color: #ed6d49; }
+      background-color: #f8a428; }
   #scrollbar .scrollbar, #scrollbar-one .scrollbar, #scrollbar-two .scrollbar, #scrollbar-three .scrollbar {
     position: relative;
     float: right;
@@ -5192,11 +5192,11 @@ ul {
   text-align: center;
   color: white;
   background-color: #e3623e;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ed6d49), color-stop(85%, #ed6d49), to(#bd3813));
-  background-image: -webkit-linear-gradient(#ed6d49, #ed6d49 85%, #bd3813);
-  background-image: -moz-linear-gradient(top, #ed6d49, #ed6d49 85%, #bd3813);
-  background-image: -o-linear-gradient(#ed6d49, #ed6d49 85%, #bd3813);
-  background-image: linear-gradient(#ed6d49, #ed6d49 85%, #bd3813);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f8a428), color-stop(85%, #f8a428), to(#bd3813));
+  background-image: -webkit-linear-gradient(#f8a428, #f8a428 85%, #bd3813);
+  background-image: -moz-linear-gradient(top, #f8a428, #f8a428 85%, #bd3813);
+  background-image: -o-linear-gradient(#f8a428, #f8a428 85%, #bd3813);
+  background-image: linear-gradient(#f8a428, #f8a428 85%, #bd3813);
   background-repeat: no-repeat;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
@@ -5251,14 +5251,14 @@ ul {
     -moz-border-radius: 4px;
     border-radius: 4px;
     border: 1px solid #e8481b;
-    background: #ed6d49; }
+    background: #f8a428; }
     .next-prev-btn-container .button:hover {
       color: #d9d9d9;
       text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); }
     .next-prev-btn-container .button.prev {
       border-left: none; }
       .next-prev-btn-container .button.prev:after {
-        background: #ed6d49;
+        background: #f8a428;
         content: '';
         position: absolute;
         height: 50%;
@@ -5272,7 +5272,7 @@ ul {
         -ms-transform: skew(-40deg, 0);
         transform: skew(-40deg, 0); }
       .next-prev-btn-container .button.prev:before {
-        background: #ed6d49;
+        background: #f8a428;
         content: '';
         position: absolute;
         height: 48%;
@@ -5288,7 +5288,7 @@ ul {
     .next-prev-btn-container .button.next {
       border-right: none; }
       .next-prev-btn-container .button.next:after {
-        background: #ed6d49;
+        background: #f8a428;
         content: '';
         position: absolute;
         height: 48%;
@@ -5302,7 +5302,7 @@ ul {
         -ms-transform: skew(-40deg, 0);
         transform: skew(-40deg, 0); }
       .next-prev-btn-container .button.next:before {
-        background: #ed6d49;
+        background: #f8a428;
         content: '';
         position: absolute;
         height: 50%;
@@ -5642,7 +5642,7 @@ header {
     font-family: iconFont;
     z-index: 1002; }
 .metro-nav .nav-block-orange {
-  background: #ed6d49; }
+  background: #f8a428; }
 .metro-nav .nav-block-green {
   background: #74b749; }
 .metro-nav .nav-block-yellow {
@@ -5671,7 +5671,7 @@ header {
       margin-right: 10px;
       float: left; }
     .chats li .name {
-      color: #ed6d49;
+      color: #f8a428;
       font-size: 13px;
       font-weight: 400; }
     .chats li .date-time {
@@ -5687,7 +5687,7 @@ header {
       position: relative; }
     .chats li.in .message {
       text-align: left;
-      border-left: 3px solid #ed6d49;
+      border-left: 3px solid #f8a428;
       margin-left: 80px;
       background: whitesmoke; }
       .chats li.in .message .arrow {
@@ -5699,7 +5699,7 @@ header {
         height: 0;
         border-top: 8px solid transparent;
         border-bottom: 8px solid transparent;
-        border-right: 8px solid #ed6d49; }
+        border-right: 8px solid #f8a428; }
     .chats li.out .message {
       border-right: 3px solid #0daed3;
       margin-right: 80px;
@@ -5844,7 +5844,7 @@ header {
               .dashboard-wrapper .left-sidebar .widget .widget-body .todo-container .todo-list li:hover {
                 background: #fafafa; }
             .dashboard-wrapper .left-sidebar .widget .widget-body .todo-container .todo-list .new {
-              border-left: 3px solid #ed6d49;
+              border-left: 3px solid #f8a428;
               margin: 1px 0; }
             .dashboard-wrapper .left-sidebar .widget .widget-body .todo-container .todo-list .completed {
               border-left: 3px solid #74b749;
@@ -5886,7 +5886,7 @@ header {
           padding: 5px 0;
           border-bottom: 1px solid #e6e6e6; }
           .dashboard-wrapper .left-sidebar .widget .widget-body .message-container article a {
-            color: #ed6d49; }
+            color: #f8a428; }
         .dashboard-wrapper .left-sidebar .widget .widget-body .message-container .icons-nav {
           width: 85%;
           position: absolute;
@@ -5899,7 +5899,7 @@ header {
               margin: 0 4px;
               line-height: 24px;
               font-size: 12px;
-              color: #ed6d49; }
+              color: #f8a428; }
           .dashboard-wrapper .left-sidebar .widget .widget-body .message-container .icons-nav li.time {
             float: left;
             color: #bfbfbf; }
@@ -6022,7 +6022,7 @@ header {
         padding: 10px; }
         .dashboard-wrapper .right-sidebar .wrapper .featured-articles-container .heading, .dashboard-wrapper .right-sidebar .wrapper .featured-articles-container .heading-blue {
           margin-top: 0;
-          color: #ed6d49;
+          color: #f8a428;
           padding-bottom: 8px;
           border-bottom: 1px dotted #d9d9d9; }
         .dashboard-wrapper .right-sidebar .wrapper .featured-articles-container .heading-blue {
@@ -6093,7 +6093,7 @@ header {
             color: #4d4d4d; }
           .dashboard-wrapper .right-sidebar .wrapper .stats li .left p {
             font-size: 11px;
-            color: #ed6d49;
+            color: #f8a428;
             text-transform: uppercase;
             margin-bottom: 0; }
         .dashboard-wrapper .right-sidebar .wrapper .stats li:nth-child(2) p {
@@ -6154,7 +6154,7 @@ header {
         .dashboard-wrapper .right-sidebar .wrapper .month-income li .yellow-block {
           background: #ffb400; }
         .dashboard-wrapper .right-sidebar .wrapper .month-income li .orange-block {
-          background: #ed6d49; }
+          background: #f8a428; }
         .dashboard-wrapper .right-sidebar .wrapper .month-income li .green-block {
           background: #74b749; }
         .dashboard-wrapper .right-sidebar .wrapper .month-income li .blue-block {
@@ -6427,7 +6427,7 @@ header {
       margin-top: 8px;
       text-align: right; }
       .invoice .invoice-head .invoice-info span {
-        color: #ed6d49;
+        color: #f8a428;
         font-weight: bold;
         font-size: 12px;
         float: right;
@@ -6457,7 +6457,7 @@ header {
   .page-not-found .number {
     text-align: right;
     font-size: 150px;
-    color: #ed6d49;
+    color: #f8a428;
     line-height: 100%; }
 
 /*  Not Found page CSS ends here */
