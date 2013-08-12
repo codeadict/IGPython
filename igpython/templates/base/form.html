@@ -1,0 +1,18 @@
+{% load i18n %}
+<form class="form-stacked {{ class }}" method="{{ method|default:"post" }}"
+    {% if action %}action="{{ action }}"{% endif %}
+    {% if includes_files %}enctype="multipart/form-data"{% endif %}>
+    {% if not method == "get" %}{% csrf_token %}{% endif %}
+    {% include 'base/form_fields.html' %}
+    <div class="form-actions no-margin">
+	   <button class="btn btn-info pull-right" type="submit">
+	       {% trans "Save" %}
+	   </button>
+
+	   <a href="#" onclick="history.go(-1);return false" class="btn pull-left">
+           <span class="icon-circle-arrow-left"></span>
+                {% trans "Go back" %}
+		</a>
+	   <div class="clearfix"></div>
+    </div>
+</form>

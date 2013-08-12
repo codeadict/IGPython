@@ -8,6 +8,8 @@ from django.db import models
 from base.models import ActivableMixin
 from django.utils.translation import gettext as _
 
+from django.utils.importlib import import_module
+
 from weighin.devices import drivers
 
 def port_list():
@@ -63,6 +65,13 @@ class Device(ActivableMixin):
         verbose_name_plural = _('Devices')
 
     def get_weight(self):
-        #driver = self.driver(self.name, self.port)
-        #return driver.get_weight()
-        raise NotImplementedError
+        #Load Driver
+        driver_scope = 'weighin.devices.drivers.%s' % self.driver
+
+        driver_cls = import_module(driver_scope)
+
+        #initialize driver Class
+        driver = driver_cls(self.name, self.port)
+
+        #Return the weight
+        return driver.get_weight()

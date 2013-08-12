@@ -21,6 +21,7 @@
   <!--
 <![endif]-->
   <head>
+    {% load i18n %}
   	{% load static from staticfiles %}
 	{% load url from future %}
     <meta charset="utf-8">
@@ -62,14 +63,16 @@
           </span>
         </button>
         <ul class="dropdown-menu pull-right">
+          {% if user.is_staff %}
           <li>
             <a href="#">
-              Account Settings
+              {% trans 'Configure OpenWeigh' %}
             </a>
           </li>
+          {% endif %}
           <li>
             <a href="{% url 'logout' %}">
-              Logout
+              {%  trans 'Logout' %}
             </a>
           </li>
         </ul>
@@ -118,7 +121,7 @@
     	</div> <!--/.dashboard-wrapper-->
     	</div>
 
-		{% block footer %}<footer><p>&copy; 2013 <a href="http://igpython.co.uk/">IGPython UK</a>. All Rights Reserved.</p></footer>{% endblock %}
+		{% block footer %}<footer><p>{% trans '&copy; 2013 <a href="http://igpython.co.uk/">IGPython UK</a>. All Rights Reserved' %}.</p></footer>{% endblock %}
 
 		<script src="{% static "js/jquery.min.js" %}"></script>
 		<script src="{% static "js/bootstrap.js" %}"></script>

@@ -15,7 +15,7 @@
                       Loading Points
                     </div>
                     <div class="tools pull-right">
-                      <a class="btn btn-small" aria-hidden="true" href="#" data-original-title="">
+                      <a class="btn btn-small" aria-hidden="true"  href="{% url "source_create" %}" data-original-title="">
                       	<i class="icon-plus" data-original-title="Add Haulier"> </i>
                       </a>
                     </div>
@@ -38,7 +38,7 @@
                         <td><i class="icon-list-alt"></i> <a href="" class="see">{{lp.name}}</a></td>
                         <td>{{lp.ammount_taken}} T </td>
                         <td>{{lp.is_destination|boolean_icon}} </td>
-                        <td>{{lp.requires_reference}} </td>
+                        <td>{{lp.requires_reference|boolean_icon}} </td>
                         <td>
                            <div class="btn-group">
                               <button data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
@@ -48,7 +48,7 @@
                               </button>
                               <ul class="dropdown-menu">
                                 <li>
-                                  <a href="#">
+                                  <a href="{% url 'source_update' lp.id %}">
                                     Edit
                                   </a>
                                 </li>

@@ -1,0 +1,33 @@
+{% block control_group %}
+    <div class="control-group {% if field.errors %}error{% endif %}">
+
+        {% block label %}
+            <label for="{{ field.auto_id }}"
+                class="control-label{% if field.field.required %} required{% endif %}">
+                {{ field.label }}
+                {% if field.field.required %} <span>*</span>{% endif %}
+            </label>
+        {% endblock %}
+
+        {% block controls %}
+            <div class="controls">
+                {% block widget %}{{ field }}{% endblock %}
+
+                {% block errors %}
+                    {% for error in field.errors %}
+                        <span class="help-block"><i class="icon-exclamation-sign"></i> {{ error }}</span>
+                    {% endfor %}
+                {% endblock %}
+
+                {% block help_text %}
+                    {% if field.help_text %}
+                        <span class='help-block'>
+                            {# We allow HTML within form help fields #}
+                            {{ field.help_text|safe }}
+                        </span>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

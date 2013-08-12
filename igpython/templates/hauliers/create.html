@@ -3,7 +3,7 @@
 {% load static from staticfiles %}
 {% load global_tags %}
 
-{% block title %}{% trans "Create Haulier" %}{% endblock title %}
+{% block title %}{{ title }}{% endblock title %}
 
 {% block content %}
 <div class="left-sidebar">
@@ -13,25 +13,12 @@
             	<div class="widget">
                   <div class="widget-header">
                     <div class="title">
-                      Create Haulier
+                      {{ title }}
                       <span class="mini-title"> Adds new haulier to database </span>
                     </div>
                   </div>
                 <div class="widget-body">
-                	<form class="form-horizontal no-margin" method="POST">
-                		{% render_form create_form %}
-                		<div class="form-actions no-margin">
-	                        <button class="btn btn-info pull-right" type="submit">
-	                          {% trans "Add Haulier" %}
-	                        </button>
-
-	                        <a href="{% url "haulier_list" %}" class="btn pull-left">
-					          <span class="icon-circle-arrow-left"></span>
-					          {% trans "Go back" %}
-					        </a>
-	                        <div class="clearfix"></div>
-                      	</div>
-                	</form>
+                	{% include 'base/form.html' %}
                 </div>
             </div>
         </div>
