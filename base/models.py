@@ -1,5 +1,10 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2013 OpenWeigh.co.uk
+# Developer: Dairon Medina Caro <dairon.medina@gmail.com>
+# Co-Developer Rhys Park <sales@openweigh.co.uk>
 from django.db import models
 from django.utils.translation import gettext as _
+from base import filesystem
 
 # Regex for each country. Not listed countries don't use postcodes
 # Based on http://en.wikipedia.org/wiki/List_of_postal_codes
@@ -184,8 +189,40 @@ POSTCODES_REGEX = {
  'ZM': r'^[0-9]{5}$',
 }
 
+def determine_image_upload_path(instance, filename):
+    return "images/%(partition)d/%(filename)s" % {
+        'partition': filesystem.get_partition_id(instance.pk),
+        'filename': filesystem.safe_filename(filename),
+    }
+
 class ActivableMixin(models.Model):
     active = models.BooleanField(verbose_name=_('Active'))
 
     class Meta:
         abstract = True
+
+
+class Configuration(models.Model):
+    """
+    Global Company Settings
+    """
+    company_name = models.CharField(_('Company Name'), max_length=200, blank=True, null=True)
+    logo = models.ImageField(_('Company Logo'), upload_to=determine_image_upload_path, null=True,
+                              storage=filesystem.ImageStorage(), blank=True)
+    street1 = models.CharField(_("Address 1"), max_length=255, blank=True, null=True)
+    street2 = models.CharField(_("Address 2"), max_length=255, blank=True, null=True)
+    city = models.CharField(_("City"), max_length=255, blank=True, null=True)
+    state = models.CharField(_("State/County"), max_length=255, blank=True, null=True)
+    postcode = models.CharField(_("Post/Zip-code"), max_length=64, blank=True, null=True)
+
+    class Meta:
+        verbose_name = _('Configuration')
+        verbose_name_plural = _('Configuration')
+
+    def __unicode__(self):
+        return self.company_name
+
+    def get_image_url(self):
+        missing = settings.STATIC_URL + 'images/missing-logo.png'
+        image_path = self.logo.url if self.logo else missing
+        return image_path

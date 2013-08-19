@@ -5,6 +5,11 @@ Software for Weighting Devices
 
 ![Image](igpython/static/img/reporting-img.jpg)
 
+Core Developers
+---------------
+ * Dairon Medina <dairon.medina@gmail.com>
+ * Rhys Park <sales@openweigh.co.uk>
+
 Contributing
 ------------
 

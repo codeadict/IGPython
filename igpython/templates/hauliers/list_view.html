@@ -7,7 +7,7 @@
 <div class="left-sidebar">
     <div class="span12">
         <div class="row-fluid">
-            <div class="span10">
+            <div class="span12">
             	<div class="widget">
                   <div class="widget-header">
                     <div class="title">
@@ -35,7 +35,7 @@
                     <tbody>
                     {% for haulier in haulier_list %}
                     <tr>
-                        <td><i class="icon-list-alt"></i> <a href="" class="see">{{haulier.name}}</a></td>
+                        <td><i class="icon-list-alt"></i> <a href="{% url 'haulier_details' haulier.id %}" class="see">{{haulier.name}}</a></td>
                         <td>{{haulier.contact_person}} </td>
                         <td>{{haulier.phone_number}} </td>
                         <td>{{haulier.email}} </td>
@@ -74,12 +74,7 @@
 </div>
 </div>
 
-<div class="right-sidebar">
-	<div class="wrapper">
-
-	</div>
-	<hr class="hr-stylish-1">
-</div>
+<div class="modal hide" id="viewHaulier"></div>
 {% endblock %}
 
 
@@ -91,6 +86,16 @@ $(document).ready(function () {
   $('#data-table').dataTable({
     "sPaginationType": "full_numbers"
   });
+});
+
+$(".see").click(function(ev) { // for each see a
+    ev.preventDefault(); // prevent navigation
+    var url = $(this).attr("href"); // get the view url
+    console.log(url);
+    $("#viewHaulier").load(url, function() { // load the url into the modal
+        $(this).modal('show'); // display the modal on url load
+    });
+    return false; // prevent the click propagation
 });
 </script>
 {% endblock %}

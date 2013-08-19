@@ -28,6 +28,9 @@ class Customer(ActivableMixin):
     class Meta:
         ordering = ('name',)
         verbose_name_plural = _('Customers')
+
+    def __unicode__(self):
+        return self.name
         
     def image_or_default(self):
         """Return user company or a default."""

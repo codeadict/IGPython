@@ -49,20 +49,22 @@ def drivers_list():
     return driver_tuple
 
 
-
 class Device(ActivableMixin):
     """
     Base model for storing devices
     """
     name = models.CharField(_('Device Name'), max_length = 100, blank = True)
     port = models.CharField(_('Port ID'), choices=port_list(), max_length = 255, blank = True)
-    driver = models.CharField(_('Driver'), choices=drivers_list(), max_length=50)
-    default = models.BooleanField(_('Is Defaul?'), default=False)
+    driver = models.CharField(_('Driver'), choices=drivers_list(), max_length=50, blank=True)
+    default = models.BooleanField(_('Is Default?'), default=False)
 
 
     class Meta:
-        ordering = ('default',)
+        ordering = ('-default',)
         verbose_name_plural = _('Devices')
+
+    def __unicode__(self):
+        return self.name
 
     def get_weight(self):
         #Load Driver

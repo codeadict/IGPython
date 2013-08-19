@@ -1,0 +1,59 @@
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% load global_tags %}
+		
+{# Modal Dialog to show product details#}
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+      ×
+    </button>
+    <h3 id="myModalLabel">
+      {% trans  "Product" %}: {{product}}
+    </h3>
+  </div>
+  <div class="modal-body">
+  	<div class="container-fluid">
+		<div class="row-fluid">
+		<div class="span12">
+		<h4>
+	      Details
+	    </h4>
+	    <hr/>
+	    <table class="table table-striped">
+	    	<tbody>
+				<tr>
+					<td>Product Code:</td>
+					<td>{{product.code}}</td>
+				</tr>
+				<tr>
+					<td>Product Name:</td>
+					<td>{{ product.name }}</td>
+				</tr>
+				<tr>
+					<td>Product Category:</td>
+					<td>{{product.category.name}}</td>
+				</tr>
+				<tr>
+					<td>Poduct EWC:</td>
+					<td>{{product.ewc.code}}<br/>{{product.ewc.description}}</td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td>{{product.description}}</td>
+				</tr>
+				<tr>
+					<td>Active:</td>
+					<td>{{product.active|boolean_icon}}</td>
+				</tr>
+			</tbody>
+	    </table>
+		</div>
+	</div>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">
+      {% trans "Close" %}
+    </button>
+  </div>

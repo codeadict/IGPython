@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url, include
-from django.views.generic import TemplateView
+from weighin.views import WeighView
 
 urlpatterns = patterns('',
-    url(r'^$', TemplateView.as_view(template_name="weighin/main.html"), name="weigh_screen"),
+    url(r'^$', WeighView.as_view(), name="weigh_screen"),
 )
 

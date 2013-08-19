@@ -6,14 +6,17 @@ from hauliers.models import Haulier
 from hauliers import forms
 
 from django.utils.translation import ugettext as _
-from django.views.generic.list import ListView
 from django.views import generic
-from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 from django.contrib import messages
 
-class HauliersList(ListView):
+class HaulierView(generic.DetailView):
+    model = Haulier
+    context_object_name='haulier'
+    template_name="hauliers/view.html"
+
+class HauliersList(generic.ListView):
     """
     Class to list Hauliers
     """

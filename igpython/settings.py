@@ -143,19 +143,22 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    #API for backbone
+    'tastypie',
+    #Apps
     'base',
     'customers',
     'vehicles',
+    'products',
     'hauliers',
     'sources',
     'weighin',
+    'transactions',
     'dockets',
     'model_report',
     'reporting',
     #Add migrations
     'south',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 )
 
 CSRF_COOKIE_NAME = 'csrftoken'

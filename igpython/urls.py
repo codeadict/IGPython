@@ -11,6 +11,16 @@ admin.autodiscover()
 from model_report import report
 report.autodiscover()
 
+
+
+from tastypie.api import Api
+from weighin.api import TransactionResource, VehicleResource, ProductResource
+
+api = Api(api_name='1.0')
+api.register(TransactionResource())
+api.register(VehicleResource())
+api.register(ProductResource())
+
 urlpatterns = patterns('',
     # Serve stactic from Media:
 #     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
@@ -20,10 +30,13 @@ urlpatterns = patterns('',
     url(r'^vehicles/', include('vehicles.urls')),
     url(r'^customers/', include('customers.urls')),
     url(r'^hauliers/', include('hauliers.urls')),
+    url(r'^products/', include('products.urls')),
     url(r'^sources/', include('sources.urls')),
+    url(r'^transactions/', include('transactions.urls')),
     url(r'^weighin/', include('weighin.urls')),
+    url(r'^api/', include(api.urls), name='weigh_api'),
     url(r'^dockets/', include('dockets.urls')),
-    url(r'^reports/', include('model_report.urls'), name="reports"),
+    url(r'^reports/', include('reporting.urls'), name="reports"),
     
 
     # Uncomment the admin/doc line below to enable admin documentation:

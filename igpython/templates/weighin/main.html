@@ -8,47 +8,68 @@
 
 {% block content %}
 <div class="left-sidebar">
-    <div class="span12">
+    <div class="span10">
         <div class="row-fluid">
-        		<canvas id="tutorial" width="440" height="220">
-					Canvas not available. You are running an Outdated Browser
-				</canvas>
-        <!-- Main screen here -->
+
+            <div id="indicator">
+                <h2 class="span3 center">1.0 <span>T</span></h2>
+            </div>
+
+ 		</div>
+	</div>
+
+    <div class="span10">
+        <div class="row-fluid">
+            <div class="span7">
+                <h4>{% trans 'Active Transactions' %}</h4>
+                <section id="todo-app">
+                    <section id="main">
+                        <table class="table noSelect" id="transaction-list">
+                            <thead class="table-bordered">
+                            <tr>
+                                <th>{% trans 'Ticket' %}</th>
+                                <th>{% trans 'Date/Time In' %}</th>
+                                <th>{% trans 'Date/Time Out' %}</th>
+                                <th>{% trans 'Vehicle' %}</th>
+                                <th>{% trans 'Product' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody id="ticket-list">
+
+                            </tbody>
+                        </table>
+
+                            <script id="ticket-template" type="text/template">
+                                     <td><%= ticket_number %></td>
+                                     <td><%= date_time_in %></td>
+                                     <td><%= date_time_out %></td>
+                                     <td><%= vehicle.driver_name %></td>
+                                     <td><%= product.code %> - <%= product.name %></td>
+                            </script>
+                    </section>
+                </section>
+
+            </div>
+            <div class="span5">
+                <h4>{% trans 'Results' %}</h4>
+                <div class="span12">
+                    <div id="wt-results" data-transaction="0">
+                        <label><p>{% trans 'Weigh In Wt' %}</p> <span> 0000.0</span></label>
+                        <label><p>{% trans 'Weigh Out Wt' %}</p> <span> 00.0</span></label>
+                        <label><p>{% trans 'Net Wt' %}</p> <span> 00.0</span></label>
+                    </div>
+                </div>
+            </div>
  		</div>
 	</div>
 </div>
 
 <div class="right-sidebar">
 	<div class="wrapper">
-		<a class="btn btn-large btn-warning2 btn-block" role="button" href="#Device-Modal" data-original-title="" data-toggle="modal">Weigh In</a>
+		<a class="btn btn-large btn-warning2 btn-block" id="weigh-btn" role="button" href="{% url 'new_transaction'%}">Weigh In</a>
 		<button class="btn btn-large btn-info btn-block" type="button">Stored Tare</button>
 		<button class="btn btn-large btn-info btn-block" type="button">Delete</button>
 		<button class="btn btn-large btn-info btn-block" type="button">Print A4</button>
-		
-		      {# Modal Dialog to select device#}
-              <div id="Device-Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    ×
-                  </button>
-                  <h3 id="myModalLabel">
-                    Select WeighIn Device
-                  </h3>
-                </div>
-                <div class="modal-body">
-                  <p>
-                    
-                  </p>
-                </div>
-                <div class="modal-footer">
-                  <button class="btn" data-dismiss="modal" aria-hidden="true">
-                    {% trans "Cancel" %}
-                  </button>
-                  <button class="btn btn-primary">
-                    {% trans "Begin Weigh In" %}
-                  </button>
-                </div>
-              </div>
 	</div>
 	<hr class="hr-stylish-1">
 	
@@ -58,9 +79,38 @@
 		</div>
 	</div>
 </div>
+
+<div id="transactionModal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+      ×
+    </button>
+    <h3 id="myModalLabel">
+      {{ title }}
+    </h3>
+  </div>
+  <div class="modal-body">
+    {% include 'base/form_popup.html' %}
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">
+        {% trans "Cancel" %}
+    </button>
+    <button class="btn btn-primary">
+        {% trans "Begin Weigh In" %}
+    </button>
+  </div>
+</div>
 {% endblock %}
 
 
 {% block footer_scripts %}
-<script src="{% static "js/weigh.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/weigh/app.js" %}"></script>
+    <script type="text/javascript">
+        $("#weigh-btn").live('click', function(){
+            var url = this.href; // get the view url
+             $("#transactionModal").modal('show');
+            return false; // prevent the click propagation
+        });
+    </script>
 {% endblock %}

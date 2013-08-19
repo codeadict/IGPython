@@ -6,9 +6,38 @@
 
 
 {% block sidebar %}
-	{% include "model_report/includes/report_nav.html" %}
+            {% include 'base/form_report.html' %}
 {% endblock %}
 
 {% block rpt_content %}
-	<img src="{% static "img/reporting-img.jpg" %}" />
+    <div class='row-fluid'>
+     <aside class="span3 graph-details">
+            <label><span><i class="icon-shopping-cart"></i>{{ total_tickets_last_day }}</span>{% trans "Total Tickets Last Day" %}</label>
+            <label><span><i class="icon-hand-right"></i>{{ active_vehicles }}</span>{% trans "Active Vehicles" %}</label>
+            <label><span><i class="icon-group"></i>{{ active_customers }}</span>{% trans "Active Customers" %}</label>
+            <label><span><i class="icon-briefcase"></i>{{ active_hauliers }}</span>{% trans "Active Hauliers" %}</label>
+     </aside>
+    <div class="span9">
+            <div id="order-graph">
+                <div class='bar-caption'><h1>{% trans "Last Week Dockets" %}</h1></div>
+                <div class='bar-y-axis'>
+                    <ul>
+                    {% for y_value in weekly_report_dict.y_range %}
+                        <li><span>{{ y_value }}</span></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <dl class='bar-chart'>
+                    {% for item in weekly_report_dict.tickets_total_daily %}
+                        <dd class='bar-layer'>
+                            <em>{{ item.day|date:"d - M"|lower }}</em>
+                            <span style="height: {{ item.percentage }}%;" >
+                                <p{% if item.percentage == 0 %} style="display: none;"{% endif %}>{{ item.total }}</p>
+                            </span>
+                        </dd>
+                    {% endfor %}
+                </dl>
+            </div>
+        </div>
+	</div>
 {% endblock %}

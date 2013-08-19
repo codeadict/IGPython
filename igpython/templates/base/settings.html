@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<table id="settings">
+  <tbody>
+    {% for setting in settings %}
+      <tr>
+        <th id="{{ setting.key }}">
+          {{ setting.key }} <a href="#{{ setting.key }}">¶</a>
+        </th>
+        <td>{{ setting.value }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

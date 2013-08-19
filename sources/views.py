@@ -6,14 +6,12 @@ from sources.models import LoadingPoint
 from sources import forms
 
 from django.utils.translation import ugettext as _
-from django.views.generic.list import ListView
-from django.views.generic.edit import FormView
 from django.views import generic
 from django.core.urlresolvers import reverse
 
 from django.contrib import messages
 
-class SourcesList(ListView):
+class SourcesList(generic.ListView):
     """
     Class to list vehicles
     """
@@ -21,6 +19,13 @@ class SourcesList(ListView):
     queryset = LoadingPoint.objects.all()
     template_name = "sources/list_view.html"
 
+class SourcesView(generic.DetailView):
+    """
+    Detail View
+    """
+    model = LoadingPoint
+    context_object_name = 'source'
+    template_name = "sources/view.html"
 
 class SourceCreate(generic.CreateView):
     """
