@@ -9,7 +9,7 @@ class ReportForm(forms.Form):
     generators = ReportList().get_report_generators()
 
     type_choices = []
-    formats = [('CSV', 'CSV')]
+    formats = [('CSV', 'CSV'), ('PDF', 'PDF')]
     for generator in generators:
         type_choices.append((generator.code, generator.description))
 

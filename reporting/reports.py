@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
+import os
+from cStringIO import StringIO
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import date
 from django.http import HttpResponse
+from django.template import Context, RequestContext
+from django.template.loader import render_to_string
 from reporting.csv_utils import CsvUnicodeWriter
+
+from xhtml2pdf import pisa
 
 
 def or_empty_char(value, char='-'):
@@ -70,3 +77,34 @@ class ReportCSVFormatter(ReportFormatter):
         response['Content-Disposition'] = 'attachment; filename=%s' % self.filename(**kwargs)
         self.generate_csv(response, objects)
         return response
+
+class ReportPDFFormatter(ReportFormatter):
+    """
+    PDF report formatter
+    """
+    pdfresponse = None
+
+    def fetch_resources(self, uri, rel):
+        """
+        Callback to allow pisa/reportlab to retrieve images, stylesheets, etc.
+        """
+        return os.path.join(settings.STATIC_ROOT, uri.replace(settings.STATIC_URL, ""))
+
+    def render_pdf(self, context, tpl):
+        encoding = "UTF-8"
+        content = render_to_string(tpl, context)
+        src = StringIO(content.encode(encoding))
+        out = StringIO()
+        result = pisa.CreatePDF(src, out, link_callback=self.fetch_resources, encoding="UTF-8")
+        print "PDF Generated"
+        if not result.err:
+            self.pdfresponse = out.getvalue()
+            return out.getvalue()
+        else:
+            print "Error on PDF"
+
+    def generate_response(self, objects, **kwargs):
+        response = HttpResponse(self.generate_pdf(objects), mimetype='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename=%s' % self.filename(**kwargs)
+        return response
+

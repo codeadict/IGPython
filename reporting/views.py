@@ -43,7 +43,7 @@ class IndexView(TemplateView):
         if not generator_cls:
             raise Http404()
 
-        formatter = 'CSV'
+        formatter = form.cleaned_data['report_format']
 
         return generator_cls(formatter=formatter)
 
