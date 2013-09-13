@@ -1,6 +1,45 @@
 var app = app || {};
 
 $(function() {
+	
+	app.LiveWeightModel = Backbone.Model.extend({
+
+	  defaults = {
+	    source:'',
+	    data: null,
+	    ymin: 0,
+	    ymax: 0,
+	    refresh_interval: 10000,
+	  },
+
+	  start: function(){
+	    @refresh()
+	    console.log("Starting to poll at #{@get('refresh_interval')}")
+	    @t_index = setInterval(@refresh, @get('refresh_interval'))
+	  },
+
+	  stop: function(){
+	    clearInterval(@t_index)
+	  },
+
+	  refresh: function(){
+	    url = @get('source')
+
+	    options ={
+	      url: url,
+	      dataType: 'json',
+	      success: function(js){
+	        process_data(js);
+	      }
+	    }
+	    $.ajax(options);
+	  },
+
+	  process_data: function(){
+	    return null
+	  }
+	    
+	});
 
     // The model for our weigh mapped to the Django one.
     app.Transaction = Backbone.Model.extend({
@@ -74,7 +113,10 @@ $(function() {
         },
 
         select: function(){
-            this.$el.toggleClass("selected");
+        	this.selectedItem = null;
+            if (this.selectedItem) this.selectedItem.removeClass('selected');
+        	this.selectedItem = this.$el;
+            this.selectedItem.addClass("selected");
             $('#weigh-btn').html('Weigth Out');
         }
 

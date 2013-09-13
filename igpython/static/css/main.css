@@ -7680,3 +7680,80 @@ div#indicator h2{
     background:linear-gradient(to bottom,  rgb(175,177,181) 0%,rgb(210,212,217) 5%);
 }
 
+.monitor {
+    margin: 10px auto;
+    width:302px;
+    height:123px;
+    background:url(../img/monitor.png);
+    position:relative;
+}
+.monitor .title {
+        color:white;
+        position: absolute;
+        top: 8px;
+        left: 221px;
+}
+
+.monitor .screen {
+        display:block;
+        position: absolute;
+        font-size: 14px;
+        color:#454a4e;
+        text-shadow:0 1px 0px rgba(0,0,0,1);
+        background: black;
+        border-radius: 4px;
+        width: 60px;
+        height: 18px;
+        padding: 1px 5px 2px 5px;
+        margin-top: 4px;
+        text-align:center;
+        background-image: -moz-linear-gradient(top left, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        background-image: -o-linear-gradient(top left, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        background-image: -webkit-gradient(linear, 0 0, 100% 100%, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0)));
+        box-shadow: 0px 1px 1px #494e54,inset 0px 1px 2px rgba(0,0,0, 0.6);
+}
+
+.monitor .screen.current {
+            top: 28px;
+            left: 214px;
+}
+
+.monitor .screen.max {
+            top:55px;
+            left: 214px;
+}
+
+.wheel {
+    position:absolute;
+    width:13px;
+    height:13px;
+    top: 97px;
+    left: 99px;
+    background:url(../img/wheel.png);
+}
+
+.needle {
+    -webkit-transform-origin:100% 50%;
+    -o-transform-origin:100% 50%;
+    -moz-transform-origin:100% 50%;
+    position:absolute;
+    top: 101px;
+    left: 30px;
+    height:5px;
+    width:76px;
+    background:url(../img/needle.png);
+}
+
+div.light {
+    width:7px;
+    height:7px;
+    position: absolute;
+    top:11px;
+    left: 211px;
+}
+div.light.green {
+        background:url(../img/green-light.png);
+    }
+div.light.red {
+        background:url(../img/red-light.png);
+    }

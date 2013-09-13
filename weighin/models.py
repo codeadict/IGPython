@@ -11,6 +11,7 @@ from django.utils.translation import gettext as _
 from django.utils.importlib import import_module
 
 from weighin.devices import drivers
+from weighin.devices.drivers import Alibi
 
 def port_list():
     """
@@ -44,8 +45,9 @@ def drivers_list():
     """
     controllers = inspect.getmembers(drivers, inspect.isclass)
     del controllers[-1]
-
-    driver_tuple = tuple(controllers)
+    newcontrollers = [(k, v.__name__) for k, v in controllers]
+    print newcontrollers
+    driver_tuple = tuple(newcontrollers)
     return driver_tuple
 
 
@@ -65,15 +67,19 @@ class Device(ActivableMixin):
 
     def __unicode__(self):
         return self.name
-
+    
     def get_weight(self):
         #Load Driver
         driver_scope = 'weighin.devices.drivers.%s' % self.driver
 
-        driver_cls = import_module(driver_scope)
+        driver_cls = Alibi #__import__(driver_scope, globals={}, locals={})
 
         #initialize driver Class
         driver = driver_cls(self.name, self.port)
 
         #Return the weight
         return driver.get_weight()
+    
+    def save(self):
+        super(Device, self).save()
+        print self.get_weight()

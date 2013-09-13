@@ -4,16 +4,19 @@
 
 {% block title %}Weightin{% endblock title %}
 
-{% block body_add %}onload='draw(0);'{% endblock %}
-
 {% block content %}
 <div class="left-sidebar">
     <div class="span10">
-        <div class="row-fluid">
+        <div class="row-fluid">            
 
-            <div id="indicator">
-                <h2 class="span3 center">1.0 <span>T</span></h2>
-            </div>
+            	<div class="monitor">
+            		<span  class="title">WeightBridge</span>
+            		<span  class="screen current">120</span>
+            		<div  class="needle"></div>
+            		<div  class="green light"></div>
+            		<div  class="wheel"></div>
+            	</div>
+            
 
  		</div>
 	</div>
@@ -107,6 +110,7 @@
 {% block footer_scripts %}
     <script type="text/javascript" src="{% static "js/weigh/app.js" %}"></script>
     <script type="text/javascript">
+    	
         $("#weigh-btn").live('click', function(){
             var url = this.href; // get the view url
              $("#transactionModal").modal('show');

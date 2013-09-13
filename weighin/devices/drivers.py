@@ -19,12 +19,12 @@ class Alibi(BaseDevice):
         Get the Weight from device
         """
         if not self.connection:
-            self.connect()
-
-        self.connection.timeout = 1
-        self.connection.write("A")
-        raw = self.connection.readline()
-        self.connection.close()
-        alibi = raw[0:5]
-        weight = raw[6:12]
-        return int(alibi), int(weight)
+            if self.connect():
+                self.connection.timeout = 1
+                self.connection.write("A")
+                raw = self.connection.readline()
+                self.connection.close()
+                alibi = raw[0:5]
+                weight = raw[6:12]
+                return int(alibi), int(weight)
+        return 0
