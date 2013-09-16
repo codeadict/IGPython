@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Delete Confirmation{% endblock title %}
+
+{% block content %}
+<div class="row-fluid">
+<div class="span12">
+    <article class="box">
+      <div class="box-content">
+      <div class="to-delete highlight-box">
+        <h1>{% trans "Delete Confirmation" %}</h1>
+
+        <form action="{{ delete_url }}" method="post">
+          {% csrf_token %}
+          <p>
+          	{%  trans "You are about to delete this" %} {{ object_name }} {% trans ". <strong>This change cant be undone!</strong> Sure you want to continue?"  %}
+          </p>
+          <button type="submit" class="btn"><i class="icon-remove icon-white"></i> {% trans "Delete" %}</button>
+          <a class="btn" href="javascript:history.go(-1);">{% trans "Cancel" %}</a>
+        </form>
+      </div>
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock %}

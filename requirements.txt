@@ -1,0 +1,11 @@
+Django==1.5.1
+Pillow==1.7.8
+South==0.7.6
+XlsxWriter==0.4.2
+pep8==1.4.6
+phonenumbers==5.7b2
+psycopg2==2.5.1
+pyPdf==1.13
+pyserial==2.6
+reportlab==2.7
+xhtml2pdf==0.0.5

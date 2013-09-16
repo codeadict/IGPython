@@ -1,0 +1,21 @@
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% load global_tags %}
+		
+  <div class="modal-body">
+    <form class="form-stacked {{ class }}" method="{{ method|default:"post" }}"
+    {% if action %}action="{{ action }}"{% endif %}
+    {% if includes_files %}enctype="multipart/form-data"{% endif %}>
+    {% if not method == "get" %}{% csrf_token %}{% endif %}
+    {% include 'base/form_fields.html' %}
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">
+        {% trans "Cancel" %}
+    </button>
+    <button type="submit" class="btn btn-primary">
+        {% trans "Begin Weigh In" %}
+    </button>
+    </form>
+  </div>

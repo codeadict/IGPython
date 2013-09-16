@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}Welcome{% endblock title %}
+
+{% block content %}
+  <div class="span12 dashboard">
+    <h1>Welcome to OpenWeigh</h1>
+
+    <img src="{% static "img/reporting-img.jpg" %}"/>
+  </div>
+{% endblock %}

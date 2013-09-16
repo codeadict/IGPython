@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Application Settings{% endblock title %}
+
+{% block content %}
+  <div class="span12 settings">  
+    <article id="edit-settings" class="main cf">
+    <h1>Application Settings</h1>
+      <ul class="nav-tabs">
+	    <li class="settings {% if settings_tab %}active{% endif %}"><a href="{% url "configure" %}">Company Settings</a></li>
+	    <li class="operators {% if operators_tab %}active{% endif %}"><a href="{% url "configure_operators" %}">Manage Operators</a></li>
+	    <li class="devices {% if devices_tab %}active{% endif %}"><a href="{% url "configure_devices" %}">WeighBridges</a></li>
+	    <li class="summary {% if de %}active{% endif %}"><a href="">Base Data</a></li>
+      </ul>
+      <div class="tab-content">
+		{% block tab_content %}{% endblock %}
+	  </div>
+    </article>
+  </div>
+{% endblock %}

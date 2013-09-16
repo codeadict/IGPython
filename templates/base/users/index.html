@@ -1,0 +1,46 @@
+{% extends "base/base_settings.html" %}
+{% load i18n %}
+
+{% block tab_content %}
+
+                <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                	<thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Email</th>
+                        <th>Full Name</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for op in operators %}
+                    <tr>
+                        <td><i class="icon-list-alt"></i> <a href="" class="see">{{op.username}}</a></td>
+                        <td>{{op.email}} </td>
+                        <td>{{op.full_name}} </td>
+                        <td>
+                           <div class="btn-group">
+                              <button data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
+                                Action
+                                <span class="caret">
+                                </span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="">
+                                    {% trans "Edit" %}
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="" class="delete-row">
+                                    {% trans "Delete" %}
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+{% endblock %}

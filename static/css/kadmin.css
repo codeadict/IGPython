@@ -1,0 +1,30 @@
+/*
+ * Styles for our admin additions via kadmin app.
+ */
+h2 {
+    border-bottom: solid 2px #f0f0f0;
+    border-top: solid 2px #f0f0f0;
+    margin: 15px 0 0;
+    padding: 2px 0;
+}
+
+#header {
+    background: none repeat scroll 0 0 #282828;
+    color: #FFFFCC;
+    overflow: hidden;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: none repeat scroll 0 0 #EB5A32;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0;
+    padding: 2px 5px 3px;
+    text-align: left;
+}
+
+#content section {
+    border-bottom: solid 2px #f0f0f0;
+    padding: 10px 0;
+}

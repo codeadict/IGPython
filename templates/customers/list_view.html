@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% block title %}Customer List{% endblock title %}
+
+{% block content %}
+<div class="left-sidebar">
+    <div class="span12">
+        <div class="row-fluid">
+            <div class="span12">
+            	<div class="widget">
+                  <div class="widget-header">
+                    <div class="title">
+                      Customers
+                    </div>
+                    <div class="tools pull-right">
+                      <a class="btn btn-small" aria-hidden="true" href="{% url "customer_create" %}" data-original-title="">
+                      	<i class="icon-plus" data-original-title="Add Customer"> </i>
+                      </a>
+                    </div>
+                  </div>
+                <div class="widget-body">
+                <div id="dt_example" class="example_alt_pagination">
+                <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                	<thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Contact Person</th>
+                        <th>Phone</th>
+                        <th>E-Mail</th>
+                        <th>City</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for customer in customer_list %}
+                    <tr>
+                        <td><i class="icon-list-alt"></i> <a href="{% url "customer_details" customer.id %}" class="see">{{customer.name}}</a></td>
+                        <td>{{customer.contact_person}} </td>
+                        <td>{{customer.phone_number}} </td>
+                        <td>{{customer.email}} </td>
+                        <td>{{customer.city}} </td>
+                        <td>
+                           <div class="btn-group">
+                              <button data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
+                                Action
+                                <span class="caret">
+                                </span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="{% url 'customer_update' customer.id %}">
+                                    {% trans "Edit" %}
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="{% url 'customer_delete' customer.id %}">
+                                    {% trans "Delete" %}
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal hide" id="viewCustomer"></div>
+{% endblock %}
+
+
+{% block footer_scripts %}
+<script src="{% static "js/jquery.dataTables.js" %}"></script>
+<script type="text/javascript">
+//Data Tables
+$(document).ready(function () {
+  $('#data-table').dataTable({
+    "sPaginationType": "full_numbers"
+  });
+});
+
+$(".see").click(function(ev) { // for each see a
+    ev.preventDefault(); // prevent navigation
+    var url = $(this).attr("href"); // get the view url
+    console.log(url);
+    $("#viewCustomer").load(url, function() { // load the url into the modal
+        $(this).modal('show'); // display the modal on url load
+    });
+    return false; // prevent the click propagation
+});
+</script>
+{% endblock %}
