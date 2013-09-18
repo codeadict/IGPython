@@ -1,0 +1,15 @@
+{% load static from staticfiles %}
+
+<table id="header">
+    <tr style="width:100%">
+        <td><img id="logo" src="{{ MEDIA_URL }}images/logo.png"/></td>
+    </tr>
+    <tr style="width:100%;color:#0F207C;font-size=16px;">
+        <td>
+	        {{ company_name }}
+			<br/>
+			{{ company_address }}
+		</td>
+    </tr>
+</table>
+<hr/>

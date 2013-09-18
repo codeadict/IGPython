@@ -218,7 +218,7 @@ class Setting(models.Model):
         return u'%s:%s' % (self.name, self.value or u'Not Set')
 
     @classmethod
-    def get(cls, name):
+    def get_val(cls, name):
         from base.forms import SettingsForm
         form = SettingsForm()
         if name not in form.fields.keys():

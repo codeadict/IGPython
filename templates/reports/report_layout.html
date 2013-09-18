@@ -1,0 +1,114 @@
+{% load i18n %}
+{% load report_tags %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>{% block meta_title %}{% endblock %}</title>
+
+    <style type="text/css">    
+    #header {
+    	margin-bottom: 20px;
+    }
+    
+    
+    #header tr {
+        font-weight: bold;
+        border-bottom: 2px solid black;
+    }
+    
+    #header td {
+    	vertical-align: middle;
+    	text-align: center;
+    	}
+    
+    h1 {
+    	font-size: 18pt;    	    	    	
+    }
+    
+    #footerContent {
+    	padding-top: 10px;
+    	font-size: 12px;
+    }
+    
+  @page {
+    margin: 1cm;
+    margin-bottom: 4cm;
+    {% block page_styles %}{% endblock %}
+	
+  @frame footer {
+    -pdf-frame-content: footerContent;
+    bottom: 1cm;
+    margin-left: 1cm;
+    margin-right: 1cm;
+    height: 2.5cm;
+    text-align: right;
+  }
+  
+  {% block extra_frames %}{% endblock %}
+  
+  }
+
+	#mid {
+        text-align: left;
+        border-bottom: 1px solid;
+    }
+	
+	
+	#report{
+    	padding: 2px 2px 2px 2px;
+        font-size: 12px;
+        text-align: left;
+    }
+    
+    #report table {
+    	border: 1px solid #000000;
+    	text-align: center;
+    	
+    }
+    
+    #report th{
+    	font-weight: bold;
+    }
+    
+        {% block style %}
+        {% endblock %}
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+    
+{% block page_header %}
+	{% render_header %}
+{% endblock %}
+
+        <div id="report">
+                {% block main %}
+
+                {% endblock %}
+        </div>
+        
+<div id="footerContent">
+{% block page_footer %}
+	<table>
+		<tr style="border-bottom: 0.5px solid; ">
+            <td>{% now "d/m/Y" %}</td>
+            <td style="text-align: right;">
+                Page
+                <pdf:pagenumber>
+            </td>	
+		</tr>
+	</table>
+	<p style="font-size: 8pt;color: #E6E6E6;text-align:center;">Weighbridge Software supplied by: OpenWeigh www.openweigh.co.uk</p>
+{% endblock %} 
+</div>  
+        
+
+    </div>
+</body>
+
+</html>
