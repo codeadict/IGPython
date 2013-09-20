@@ -36,7 +36,7 @@ def port_list():
         i = 0
         ports = glob.glob('/dev/ttyS*') + glob.glob('/dev/ttyUSB*')
 
-    choices = tuple((str(i),ports[i]) for i in range(len(ports)))
+    choices = tuple((ports[i],ports[i]) for i in range(len(ports)))
     return choices
 
 def drivers_list():
