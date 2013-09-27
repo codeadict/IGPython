@@ -27,5 +27,5 @@ class Alibi(BaseDevice):
                 self.connection.close()
                 alibi = raw[0:5]
                 weight = raw[6:12]
-                return int(alibi), D(weight)
-        return D(0)
+                return [int(alibi), D(weight)]
+        return [D(0), D(0)]

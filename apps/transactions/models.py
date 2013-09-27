@@ -46,7 +46,7 @@ def post_transaction_save(sender, **kwargs):
     instance = kwargs.get('instance', None)
     created = kwargs.get('created', False)
     weight = instance.device.weight       
-    ticket = Docket(docket_number=instance.order_number, gross=weight, tare=weight, ind_id=1, ind_id2=2, cancelled=True)
+    ticket = Docket(docket_number=instance.order_number, gross=weight[0], tare=weight, ind_id=1, ind_id2=2, cancelled=True)
     
     ticket.save()
         
