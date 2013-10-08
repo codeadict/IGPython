@@ -66,7 +66,7 @@ class Device(ActivableMixin):
 
     def __unicode__(self):
         return self.name
-    
+
     @property
     def weight(self):
         #Load Driver
@@ -79,8 +79,8 @@ class Device(ActivableMixin):
 
         #Return the weight
         weight = driver.get_weight()
-        print weight
-        return weight
-    
+        print weight[0]
+        return weight[0]
+
     def save(self):
         super(Device, self).save()

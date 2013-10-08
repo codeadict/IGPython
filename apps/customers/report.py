@@ -1,5 +1,9 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2013 OpenWeigh.co.uk
+# Developer: Dairon Medina Caro <dairon.medina@gmail.com>
+# Co-Developer Rhys Park <sales@openweigh.co.uk>
 from django.utils.translation import ugettext_lazy as _
-from reporting.reports import ReportCSVFormatter, ReportGenerator, or_empty_char
+from reporting.reports import ReportCSVFormatter, ReportPDFFormatter, ReportGenerator, or_empty_char
 
 from customers.models import Customer
 
@@ -30,12 +34,25 @@ class CustomersCSVFormatter(ReportCSVFormatter):
     def filename(self):
         return self.filename_template
 
+class CustomersPDFFormatter(ReportPDFFormatter):
+    filename_template = 'customers-report.pdf'
+
+    def generate_pdf(self, customers):
+        context = {}
+        context['customers'] = customers
+        template = 'reports/customers_pdf_report.html'
+        return self.render_pdf(context, template)
+
+    def filename(self):
+        return self.filename_template
+
 class CustomersReportGenerator(ReportGenerator):
     code = 'customers'
     description = _('Customers')
 
     formatters = {
         'CSV_formatter': CustomersCSVFormatter,
+        'PDF_formatter': CustomersPDFFormatter,
     }
 
     def generate(self):

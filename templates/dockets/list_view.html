@@ -30,6 +30,7 @@
                         <th>Ind ID</th>
                         <th>Ind ID</th>
                         <th>Cancelled</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,6 +44,13 @@
                         <td>{{docket.ind_id}} </td>
                         <td>{{docket.ind_id2}} </td>
                         <td>{{docket.cancelled|boolean_icon}} </td>
+                        <td class="text-center">
+                            <span class="fs1" data-icon="" aria-hidden="true"></span>
+                            <span class="fs1" data-icon="" aria-hidden="true"></span>
+
+                            <span class="fs1" data-icon="" aria-hidden="true"></span>
+                            <span class="fs1" data-icon="" aria-hidden="true"></span>
+                        </td>
                     </tr>
                     {% endfor %}
                     </tbody>

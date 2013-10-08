@@ -27,19 +27,21 @@
                 <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
                 	<thead>
                     <tr>
+                        <th>Plate Number</th>
                         <th>Driver Name</th>
                         <th>Max Gross</th>
                         <th>Vehicle Reference Number</th>
-                        <th>Actions</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for vehicle in vehicle_list %}
                     <tr>
-                        <td><i class="icon-list-alt"></i> <a href="{% url "vehicle_details" vehicle.id %}" class="see">{{vehicle.driver_name}}</a></td>
+                        <td><i class="icon-list-alt"></i> <a href="{% url "vehicle_details" vehicle.id %}" class="see">{{vehicle.code}}</a></td>
+                        <td>{{vehicle.driver_name}}</td>
                         <td>{{vehicle.max_gross}} </td>
-                        <td>{{vehicle.reference_number|boolean_icon}} </td>
-                        <td>
+                        <td class="text-center">{{vehicle.reference_number|boolean_icon}} </td>
+                        <td class="text-center">
                            <div class="btn-group">
                               <button data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
                                 Action

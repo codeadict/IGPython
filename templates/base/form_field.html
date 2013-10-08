@@ -21,9 +21,9 @@
 
                 {% block help_text %}
                     {% if field.help_text %}
-                        <span class='help-block'>
+                        <span class="help-inline">
                             {# We allow HTML within form help fields #}
-                            {{ field.help_text|safe }}
+                            <span class="fs1" data-icon="" aria-hidden="true" title="{{ field.help_text|safe }}"></span>
                         </span>
                     {% endif %}
                 {% endblock %}

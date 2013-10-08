@@ -30,7 +30,7 @@
                         <th>Taken from Loading Point</th>
                         <th>Is Destination</th>
                         <th>Requires Reference Number</th>
-                        <th>Actions</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,9 +38,9 @@
                     <tr>
                         <td><i class="icon-list-alt"></i> <a href="{% url 'source_details' lp.id %}" class="see">{{lp.name}}</a></td>
                         <td>{{lp.ammount_taken}} T </td>
-                        <td>{{lp.is_destination|boolean_icon}} </td>
-                        <td>{{lp.requires_reference|boolean_icon}} </td>
-                        <td>
+                        <td class="text-center">{{lp.is_destination|boolean_icon}} </td>
+                        <td class="text-center">{{lp.requires_reference|boolean_icon}} </td>
+                        <td class="text-center">
                            <div class="btn-group">
                               <button data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
                                 Action

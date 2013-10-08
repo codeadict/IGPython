@@ -27,6 +27,7 @@
     </script>
     <link href="{% static "css/icomoon/style.css" %}" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/select2.css" %}" />
     <!--[if lte IE 7]>
     <script src="css/icomoon-font/lte-ie7.js">
     </script>
@@ -41,14 +42,11 @@
         <img src="{% static "img/logo.png" %}" alt="Logo"/>
       </a>
       {% if user.is_authenticated %}
-      <div class="btn-group">
-        <button class="btn btn-primary">
-          {{ user.email }}
-        </button>
-        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
-          <span class="caret">
-          </span>
-        </button>
+      <div class="user-profile">
+        <a data-toggle="dropdown" class="dropdown-toggle">
+          <img src="{% static 'img/profile1.png' %}" alt="Profile-Image">
+          <span class="caret"></span>
+        </a>
         <ul class="dropdown-menu pull-right">
           {% if user.is_staff %}
           <li>
@@ -57,6 +55,16 @@
             </a>
           </li>
           {% endif %}
+          <li>
+            <a href="">
+              {%  trans 'User Manual' %}
+            </a>
+          </li>
+          <li>
+            <a href="">
+              {%  trans 'About...' %}
+            </a>
+          </li>
           <li>
             <a href="{% url 'logout' %}">
               {%  trans 'Logout' %}
@@ -84,6 +92,8 @@
           </ul>
           <div class="clearfix">
           </div>
+          <div class="sub-nav"></div>
+
         </div>
 
         <div class="dashboard-wrapper">

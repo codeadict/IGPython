@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2013 OpenWeigh.co.uk
+# Developer: Dairon Medina Caro <dairon.medina@gmail.com>
+# Co-Developer Rhys Park <sales@openweigh.co.uk>
 from ast import literal_eval
 
 from django.shortcuts import render_to_response
@@ -15,6 +19,7 @@ from django.contrib import messages
 
 from base.models import Setting
 from weighin.models import Device
+from products.models import Category, EWC
 from base.forms import SettingsForm
 
 @login_required
@@ -44,6 +49,19 @@ def edit_settings(request):
     form = SettingsForm(initial=initial)
     return render_to_response("settings.html", {'form': form, 'settings_tab': True}, context_instance=RequestContext(request))
 
+
+@login_required
+def base_data(request):
+    ewc = EWC.objects.all()
+    categories = Category.objects.all()
+
+    return render_to_response("base/basedata/index.html",
+        {'categories': categories,
+         'ewc': ewc,
+         'basedata_tab': True},
+        context_instance=RequestContext(request))
+
+
 class UsersList(generic.ListView):
     template_name = 'base/users/index.html'
     context_object_name = "operators"
@@ -71,3 +89,5 @@ class DeviceList(generic.ListView):
         context = super(DeviceList, self).get_context_data(**kwargs)
         context['devices_tab'] = True
         return context
+
+

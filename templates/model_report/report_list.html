@@ -12,10 +12,11 @@
 {% block rpt_content %}
     <div class='row-fluid'>
      <aside class="span3 graph-details">
-            <label><span><i class="icon-shopping-cart"></i>{{ total_tickets_last_day }}</span>{% trans "Total Tickets Last Day" %}</label>
-            <label><span><i class="icon-hand-right"></i>{{ active_vehicles }}</span>{% trans "Active Vehicles" %}</label>
-            <label><span><i class="icon-group"></i>{{ active_customers }}</span>{% trans "Active Customers" %}</label>
-            <label><span><i class="icon-briefcase"></i>{{ active_hauliers }}</span>{% trans "Active Hauliers" %}</label>
+            <label><span><span class="fs1" data-icon="&#xe034;" aria-hidden="true"></span>{{ total_tickets_last_day }}</span>{% trans "Total Tickets Last Day" %}</label>
+            <label><span><span class="fs1" data-icon="&#xe0ab;" aria-hidden="true"></span>{{ active_vehicles }}</span>{% trans "Active Vehicles" %}</label>
+            <label><span><span class="fs1" data-icon="&#xe075;" aria-hidden="true"></span>{{ active_customers }}</span>{% trans "Active Customers" %}</label>
+            <label><span><span class="fs1" data-icon="&#xe071;" aria-hidden="true"></span>{{ active_hauliers }}</span>{% trans "Active Hauliers" %}</label>
+            <label><span><span class="fs1" data-icon="&#xe05c;" aria-hidden="true"></span>{{ active_hauliers }}</span>{% trans "Active Products" %}</label>
      </aside>
     <div class="span9">
             <div id="order-graph">

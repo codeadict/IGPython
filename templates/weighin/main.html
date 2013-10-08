@@ -7,7 +7,7 @@
 {% block content %}
 <div class="left-sidebar">
     <div class="span10">
-        <div class="row-fluid">            
+        <div class="row-fluid">
 
             	<div class="monitor">
             		<span  class="title">WeightBridge</span>
@@ -16,7 +16,7 @@
             		<div  class="green light"></div>
             		<div  class="wheel"></div>
             	</div>
-            
+
 
  		</div>
 	</div>
@@ -27,6 +27,16 @@
                 <h4>{% trans 'Active Transactions' %}</h4>
                 <section id="todo-app">
                     <section id="main">
+                    <div id="scrollbar">
+                      <div class="scrollbar">
+                        <div class="track">
+                          <div class="thumb">
+                            <div class="end">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="viewport">
                         <table class="table noSelect" id="transaction-list">
                             <thead class="table-bordered">
                             <tr>
@@ -46,9 +56,11 @@
                                      <td><%= order_number %></td>
                                      <td><%= date_time_in %></td>
                                      <td><%= date_time_out %></td>
-                                     <td><%= vehicle.driver_name %></td>
+                                     <td><%= vehicle.code %></td>
                                      <td><%= product.code %> - <%= product.name %></td>
                             </script>
+                    </div>
+                    </div>
                     </section>
                 </section>
 
@@ -74,7 +86,7 @@
 		<button class="btn btn-large btn-info btn-block" type="button">Print A4</button>
 	</div>
 	<hr class="hr-stylish-1">
-	
+
 	<div class="wrapper">
 		<div class="featured-articles-container">
 			<h5 class="heading-blue">OnSite Vehicles</h5>
@@ -98,12 +110,18 @@
 
 {% block footer_scripts %}
     <script type="text/javascript" src="{% static "js/weigh/app.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/weigh/tiny-scrollbar.js" %}"></script>
     <script type="text/javascript">
-    	
+
         $("#weigh-btn").live('click', function(){
             var url = this.href; // get the view url
              $("#transactionModal").modal('show');
             return false; // prevent the click propagation
         });
+
+        $("select").select2();
+
+      //Tiny Scrollbar
+      //$('#scrollbar').tinyscrollbar();
     </script>
 {% endblock %}

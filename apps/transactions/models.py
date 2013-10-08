@@ -13,7 +13,7 @@ from dockets.models import Docket
 
 class Transaction(models.Model):
     """
-    Base model for weight transaction 
+    Base model for weight transaction
     """
     device = models.ForeignKey('weighin.Device', verbose_name=_('Select Weighbridge'))
     order_number = models.IntegerField(_('Order Number'))
@@ -31,12 +31,12 @@ class Transaction(models.Model):
 
     def __unicode__(self):
         return str(self.order_number)
-    
+
     @property
     def product_category(self):
         return self.product.category.name
-    
-    
+
+
 #Signals
 
 def post_transaction_save(sender, **kwargs):
@@ -45,11 +45,11 @@ def post_transaction_save(sender, **kwargs):
     """
     instance = kwargs.get('instance', None)
     created = kwargs.get('created', False)
-    weight = instance.device.weight       
-    ticket = Docket(docket_number=instance.order_number, gross=weight[0], tare=weight, ind_id=1, ind_id2=2, cancelled=True)
-    
+    weight = instance.device.weight
+    ticket = Docket(docket_number=instance.order_number, gross=weight, tare=weight, ind_id=1, ind_id2=2, cancelled=True)
+
     ticket.save()
-        
+
 
 post_save.connect(post_transaction_save, sender=Transaction,
                   dispatch_uid='signal_post_transaction_save')

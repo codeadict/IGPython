@@ -6,7 +6,7 @@
 
 <div class="row-fluid">
       <div class="span12">
-                
+
                 <div class="widget">
                   <div class="widget-header">
                     <h1 class="title">
@@ -18,13 +18,13 @@
 					    <li class="settings {% if settings_tab %}active{% endif %}"><a href="{% url "configure" %}">Company Settings</a></li>
 					    <li class="operators {% if operators_tab %}active{% endif %}"><a href="{% url "configure_operators" %}">Manage Operators</a></li>
 					    <li class="devices {% if devices_tab %}active{% endif %}"><a href="{% url "configure_devices" %}">WeighBridges</a></li>
-					    <li class="summary {% if de %}active{% endif %}"><a href="">Base Data</a></li>
+					    <li class="summary {% if basedata_tab %}active{% endif %}"><a href="{% url "configure_data" %}">Base Data</a></li>
 				    </ul>
                     <div class="tab-content">
                     	<div class="tab-panel">
                     		{% block tab_content %}{% endblock %}
                     	</div>
-                    </div>	
+                    </div>
 	  			  </div>
   </div>
 </div>
